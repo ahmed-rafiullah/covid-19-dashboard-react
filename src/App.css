@@ -1,38 +1,207 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Navigation Bar Start */
+nav {
+  background-color: white ;
+  height: 70px;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  color:#1B2845;
+  top: 0px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90%;
+  max-width:  1100px;
+  
+}
+
+.nav-content ul {
+  margin: 0px;
+  margin-left: auto;
+  list-style-type: none;
+  padding: 0px;
+  
+}
+
+
+.nav-content li {
+  display: inline-block;
+  margin: 0px;
+  margin-left: 26px;
+}
+
+.nav-content li a {
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-content li a:visited {
+  color: inherit;
+}
+
+.nav-content li a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* Navigation Bar End */
+
+
+/* Hero start */
+
+.hero {
+  display: flex;
+  margin-top: 70px;
+  background-image: url('./imgs/hero-bg.svg');
+ 
+
+  height: 185px;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-content {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+  max-width:  1100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-header {
+  margin-right: 16px;
+  font-size: 50px;
+  font-weight: 900px;
 }
+
+/* Hero End */
+
+/* Footer start */
+footer {
+  display: flex;
+  background-color: #1B2845;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  
+}
+
+footer li {
+  display: inline;
+}
+
+.footer-content {
+  height: 100%;
+  width: 90%;
+  max-width:  1100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+
+.footer-content ul {
+  margin: 0px;
+  margin-left: auto;
+  list-style-type: none;
+  padding: 0px;
+  
+}
+
+
+.footer-content li {
+  display: inline-block;
+  margin: 0px;
+  margin-left: 26px;
+}
+
+.footer-content li a {
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.footer-content li a:visited {
+  color: inherit;
+}
+
+.footer-content li a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* footer end */
+
+
+main {
+  flex: 1;
+}
+
+
+.scrollup-button {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  right: 35px;
+  bottom: 85px;
+  color: white;
+  border: thin;
+  background-color: #00CEC9;
+}
+
+/* Github buttons */
+
+
+
+/* Github buttons end */
