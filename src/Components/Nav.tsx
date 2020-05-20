@@ -15,7 +15,10 @@ export default function NavBar(props) {
       <div className="nav_content">
         <SiteLogo />
         <h3 className="site_title">COVID-19 Dashboard</h3>
-        <NavButton onClick={flipMenu}  className="nav_button" />
+        <button className="nav_button"  onClick={flipMenu}>
+         <NavButton  />
+        </button>
+       
 
         {/* movile menu expanded */}
         <div className={`menu ${menuState}`}>

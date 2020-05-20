@@ -6,7 +6,7 @@
   --input-background-color: #2b2b2b;
   --padding: 1.1rem;
   --border-color: #979797;
-  --max-width: 1400px;
+  --max-width: 1600px;
   --width-percentage: 90%;
   --global-font-family: 'Nunito Sans', "Inter", sans-serif;
 }
@@ -76,8 +76,12 @@ nav {
 }
 
 .nav_button {
+  outline: none;
   margin-left: auto;
-  height: 30px;
+  height: 100%;
+  width: 50px;
+  border: none;
+  background-color: transparent;
   transition: fill 0.2s;
   fill: var(--border-color);
 }
