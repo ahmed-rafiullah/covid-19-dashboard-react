@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import mapboxgl from 'mapbox-gl';
+import * as Sentry from '@sentry/browser';
+
+//  only run sentry in production not during development
+if(process.env.NODE_ENV === 'production') {
+  Sentry.init({dsn: process.env.REACT_APP_SENTRYDSN});
+}
+
 
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN ?? ''

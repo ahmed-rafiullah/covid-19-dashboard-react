@@ -14,9 +14,12 @@ function App() {
     <NavBar/>
       <Main/>
     <Footer/>
+    
     </>
    
   );
+
+
 }
 
 export default App;
