@@ -3,15 +3,16 @@
   --border-radius: 0px;
   --primary-color: #592e84;
   --secondary-color: #222222;
-  --input-background-color: #2B2B2B;
+  --input-background-color: #2b2b2b;
   --padding: 1.1rem;
   --border-color: #979797;
   --max-width: 1400px;
   --width-percentage: 90%;
+  --global-font-family: 'Nunito Sans', "Inter", sans-serif;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--global-font-family);
   margin: 0;
   font-size: 16px;
   color: white;
@@ -30,6 +31,7 @@ body {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 a:visited {
@@ -52,6 +54,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
+  border-bottom: 1px solid var(--input-background-color);
   /* border-bottom: 1px solid #BDB8B8; */
 }
 
@@ -80,6 +84,7 @@ nav {
 
 .nav_button:hover {
   fill: white;
+  cursor: pointer;
 }
 
 .nav-content > ul:first-child {
@@ -116,12 +121,15 @@ footer {
   left: 0px;
   right: 0px;
   display: flex;
+  z-index: 999;
   background-color: var(--secondary-color);
   height: 60px;
   justify-content: center;
   align-items: center;
   color: white;
 }
+
+
 
 .footer_content {
   padding-left: 0px;
@@ -137,13 +145,32 @@ footer {
   padding: 0px;
 }
 
-.footer_content li {
-  display: inline-block;
+.footer_content span, .footer_content h4 {
+  display: none
+}
+
+
+
+.footer_nav {
+  padding-left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+
+.footer_nav li {
+  /* display: inline-block; */
   margin: 0px;
   height: 100%;
 }
 
-.footer_content a {
+.footer_nav li a {
   display: flex;
   width: 50px;
   flex-direction: column;
@@ -153,12 +180,19 @@ footer {
   justify-content: space-evenly;
 }
 
-.footer_content p {
+.footer_nav p {
   margin: 0px;
   font-size: 10px;
   text-align: center;
   font-weight: 400;
 }
+
+  /* make footer stoff appear */
+  .footer_content iframe, .footer_content h4 {
+    display: none
+  }
+
+
 
 /* .footer-content li {
   display: inline-block;
@@ -191,7 +225,7 @@ main {
   align-items: center;
   flex-direction: column;
   margin-top: 66px;
-  margin-bottom: 60px ;
+  margin-bottom: 60px;
   background-color: var(--background-color);
 }
 
@@ -242,7 +276,7 @@ main {
   outline: none;
   width: 100%;
   /* https://stackoverflow.com/a/27641804 */
-  background: url('./imgs/angle-down.svg') no-repeat right;
+  background: url("./imgs/angle-down.svg") no-repeat right;
   -webkit-appearance: none;
   appearance: none;
   -moz-appearance: none;
@@ -251,180 +285,336 @@ main {
 }
 
 .controls form select:focus {
-
   border: 2px solid white;
- 
 }
 
 /* controls end  */
 
+/* menu start */
+
+.menu {
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  color: white;
+  background-color: var(--secondary-color);
+  background-image: url("./imgs/me.svg");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  /* background-size: 24%; */
+  position: absolute;
+  /* display: none; */
+  top: 66px;
+  left: 0px;
+  right: 0px;
+  transition-property: visibility, opacity;
+  transition-duration: 2s, 2s;
+}
+
+.menu_content {
+  width: var(--width-percentage);
+  max-width: var(--max-width);
+}
+
+.closed_menu {
+  display: none;
+}
+
+.open_menu {
+  display: fle;
+}
+
+.menu ul {
+  justify-content: flex-start;
+  padding-left: 0px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.menu li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.menu li a {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.menu p {
+  font-size: 15px;
+}
+
+/* menu end */
 
 /* dashboard start */
-
 
 .grid-container {
   display: grid;
   margin-top: 30px;
-  grid-template-areas: 
-  "tc tc td td tr tr "
-  "tc tc td td tr tr "
-  "ct ct ct cr cr cr"
-  "ct ct ct cr cr cr"
-  "gf gf gf gr gr gr"
-  "gf gf gf gr gr gr"
-  "gf gf gf gr gr gr"
-  "map map map map map map"
-  "map map map map map map"
-  "map map map map map map"
-  "map map map map map map"
-  "news news news news news news"
-  "news news news news news news"
-  "news news news news news news"
-  "news news news news news news"
-  "twit twit twit twit twit twit"
-  "twit twit twit twit twit twit"
-  "twit twit twit twit twit twit"
-  "twit twit twit twit twit twit"
-  "table table table table table table"
-  "table table table table table table"
-  "table table table table table table"
-  "table table table table table table";
+  grid-template-areas:
+    "tc tc td td tr tr "
+    "tc tc td td tr tr "
+    "ct ct ct cr cr cr"
+    "ct ct ct cr cr cr"
+    "gf gf gf gr gr gr"
+    "gf gf gf gr gr gr"
+    "gf gf gf gr gr gr"
+    "map map map map map map"
+    "map map map map map map"
+    "map map map map map map"
+    "map map map map map map"
+    "map map map map map map"
+    "map map map map map map"
+    "news news news news news news"
+    "news news news news news news"
+    "news news news news news news"
+    "news news news news news news"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "table table table table table table"
+    "table table table table table table"
+    "table table table table table table"
+    "table table table table table table";
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(50px, auto);
   gap: 10px;
 }
 
-#count_total_cases{
-grid-area: tc ;
-background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+#count_total_cases {
+  grid-area: tc;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
-#count_total_deaths{
-grid-area: td ;
-background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+#count_total_deaths {
+  grid-area: td;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
-#count_total_recoveries{
-grid-area: tr ;
-background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+#count_total_recoveries {
+  grid-area: tr;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
-
 
 #cases_today {
- grid-area: ct;
- background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+  grid-area: ct;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
 #cases_recovered {
- grid-area: cr;
- background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+  grid-area: cr;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
-#graph_fatality{
-grid-area: gf;
-background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+#graph_fatality {
+  grid-area: gf;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
-#graph_recovery{
-grid-area: gr;
-background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+#graph_recovery {
+  grid-area: gr;
+  background-color: #222222;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
-#map{
+#map {
   grid-area: map;
   background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+  border: 1px solid #979797;
+  padding: 10px;
+  position: relative;
 }
 
-#news{
+.map_content {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+}
+
+#news {
   grid-area: news;
   background-color: #222222;
-border: 1px solid #979797;
-padding: 10px;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
-#twitterfeed{
+#twitterfeed {
   grid-area: twit;
   background-color: #222222;
-border: 1px solid #979797; padding: 10px;
+  border: 1px solid #979797;
+  padding: 10px;
 }
 
-#table{
+#table {
   grid-area: table;
   background-color: #222222;
-border: 1px solid #979797; padding: 10px;
+  border: 1px solid #979797;
+  padding: 10px;
+}
+
+@media only screen and (min-width: 848px) {
+  .controls form select {
+    width: 60%;
+  }
+
+  /* footer will not be fixed */
+
+  footer {
+    position: static;
+
+    /* bottom: auto;
+    left: auto;
+    right: auto; */
+  }
+
+  /* hider burger */
+  .nav_button {
+    display: none;
+  }
+
+  /* make menu normal */
+  .menu_content,
+  .menu {
+    all: unset;
+    height: 100%;
+  }
+
+  /* set it to be on right side always */
+  .menu {
+    margin-left: auto;
+    background-image: none;
+   
+  }
+
+  /* ghaib karo github wale span aur paragraph ko ko */
+  .menu p,
+  .menu span {
+    display: none;
+  }
+
+  /* ul ke margin ko hatao */
+  .menu_content ul {
+    margin: 0px;
+    display: flex;
+    height: inherit;
+    align-items: center;
+  }
+
+  /* hide github stuff */
+
+.menu_content iframe{
+  display: none
 }
 
 
+  /* make the anchor full height to make it easy to click */
+  .menu_content ul li {
+    height: inherit;
+  }
 
+  .menu_content ul li a{
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
 
+  /* enlarge site title */
+  .site_title {
+    font-size: 24px;
+  }
 
-@media only screen and (min-width: 760px) {
+  /* increase height of footer */
+  footer {
+    height: 80px;
+  }
+
+  /* make footer stoff appear */
+  .footer_content iframe, .footer_content h4 {
+    display: initial
+  }
+  
+  
+  /* make ul right aligned */
+  .footer_nav {
+    margin-left: auto;
+    width: unset;
+  }
+  
+  /* hide svg */
+  .footer_nav svg {
+    display: none
+  }
+
+  /* increase font size and weight */
+  .footer_nav li p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .footer_nav li a {
+    width: unset;
+    margin-left: 20px;
+  }
+
 
   .grid-container {
-
-
-  grid-template-areas: 
-  "tc tc tc td td td tr tr tr  table table table table table "
-  "tc tc tc td td td tr tr tr  table table table table table"
-  "map map map map map map map map map table table table table table"
-  "map map map map map map map map map table table table table table"
-  "map map map map map map map map map gf gf gf gf gf "
-  "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
-  "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
-  "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
-  "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
-  "news news news news news news news twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit";
- gap: 12px;
-grid-template-columns: repeat(14, 1fr);
- 
-}
+    grid-template-areas:
+      "tc tc tc td td td tr tr tr  table table table table table "
+      "tc tc tc td td td tr tr tr  table table table table table"
+      "map map map map map map map map map table table table table table"
+      "map map map map map map map map map table table table table table"
+      "map map map map map map map map map gf gf gf gf gf "
+      "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
+      "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
+      "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
+      "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
+      "news news news news news news news twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit";
+    gap: 12px;
+    grid-template-columns: repeat(14, 1fr);
+  }
 }
 
-
-
-@media only screen and (min-width: 1280px) { 
-
-.grid-container {
-  grid-template-areas: 
-  "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
-  "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
-  "map map map map map map map map map  ct ct ct cr cr cr "
-  "map map map map map map map map map gr gr gr gf gf gf"
-  "map map map map map map map map map gr gr gr gf gf gf"
-  "map map map map map map map map map gr gr gr gf gf gf"
-  "map map map map map map map map map table table table table table table"
-  "map map map map map map map map map table table table table table table"
-  "map map map map map map map map map table table table table table table"
-
-  "news news news news news news news twit twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit twit"
-  "news news news news news news news twit twit twit twit twit twit twit twit" ;
-  gap: 15px;
-  grid-template-columns: repeat(15, 1fr);
- 
-}
-
+@media only screen and (min-width: 1280px) {
+  .grid-container {
+    grid-template-areas:
+      "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
+      "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
+      "map map map map map map map map map  ct ct ct cr cr cr "
+      "map map map map map map map map map gr gr gr gf gf gf"
+      "map map map map map map map map map gr gr gr gf gf gf"
+      "map map map map map map map map map gr gr gr gf gf gf"
+      "map map map map map map map map map table table table table table table"
+      "map map map map map map map map map table table table table table table"
+      "map map map map map map map map map table table table table table table"
+      "news news news news news news news twit twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit twit"
+      "news news news news news news news twit twit twit twit twit twit twit twit";
+    gap: 15px;
+    grid-template-columns: repeat(15, 1fr);
+  }
 }
 /* dashboard end */
-
-
-
-

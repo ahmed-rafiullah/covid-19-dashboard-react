@@ -1,4 +1,5 @@
 import React from "react";
+import Map from './Map'
 
 export default function Dashboard(props) {
   return (
@@ -16,7 +17,9 @@ export default function Dashboard(props) {
 
       <div id="graph_recovery">recovery rate</div>
 
-      <div id="map">Map</div>
+      <div id="map">
+          <Map/>
+      </div>
 
       <div id="twitterfeed">Twitter feed</div>
 
