@@ -40,9 +40,12 @@ export default class Map extends React.Component<MapProps, MapState> {
         map.addControl(new mapboxgl.NavigationControl()); 
         map.addControl(new mapboxgl.FullscreenControl());  
         map.scrollZoom.disable();    
+
+       
   }
 
   render() {
+   
     return (
       <>
         <div className='map_content' ref={(el) => (this.mapContainer = el)} />

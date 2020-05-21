@@ -21,7 +21,9 @@ import React from 'react'
         enableArea={true}
         colors={{ scheme: 'paired' }}
         isInteractive={false}
-        animate={false}
+        animate={true}
+        motionStiffness={95}
+        motionDamping={16}
         legends={[]}
     />
 )

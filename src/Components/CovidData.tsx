@@ -6,6 +6,7 @@ import { GlobalTimelineInterface } from "../DataInterfaces/globalTimelineInterfa
 
 interface COVIDDataProps {
   children: any;
+  startingCountry: string
  
 }
 
@@ -48,13 +49,22 @@ export default class COVIDData extends React.Component<
       ),
       fetch(`https://corona-api.com/timeline`).then((res) => res.json()),
     ])
-      .finally(() => delay(800))
+      .finally(() => delay(500))
       .then((res) => {
+        const allCountries: AllCountriesDataInterface = res[0]
+        const countryData = allCountries.data.find(x => {
+            return x.code === this.props.startingCountry
+        })
+        
+        
+
         this.setState({
-          allCountriesData: res[0],
+          allCountriesData: allCountries,
           globalTimeline: res[1],
+          countryData: countryData,
           isLoading: false,
         });
+        
       })
       .catch((err: Error) => {
         console.log(err);
@@ -101,9 +111,17 @@ export default class COVIDData extends React.Component<
     ])
       .finally(() => delay(800))
       .then((res) => {
+
+        const allCountries: AllCountriesDataInterface = res[0]
+        const countryData = allCountries.data.find(x => {
+            return x.code === this.props.startingCountry
+        })
+
         this.setState({
-          allCountriesData: res[0],
+            
+          allCountriesData: allCountries,
           globalTimeline: res[1],
+          countryData: countryData,
           isLoading: false,
         });
       })

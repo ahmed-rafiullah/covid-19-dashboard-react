@@ -3,8 +3,7 @@ import Dashboard from "./Dashboard";
 import ControlForm from "./Controls";
 import COVIDData, { COVIDDataCallback } from "./CovidData";
 
-
-function RenderMain (props: COVIDDataCallback) {
+function RenderMain(props: COVIDDataCallback) {
   if (!props.error) {
     return (
       <>
@@ -13,10 +12,9 @@ function RenderMain (props: COVIDDataCallback) {
           allCountriesData={props.allCountriesData}
           changeCountry={props.changeCountry}
           countryData={props.countryData}
-          
         />
         <Dashboard
-        
+          allCountriesData={props.allCountriesData}
           isLoading={props.isLoading}
           countryData={props.countryData}
         />
@@ -30,14 +28,31 @@ function RenderMain (props: COVIDDataCallback) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems:'center',
+            alignItems: "center",
             textAlign: "center",
           }}
         >
           <h4>An Error Occurred</h4>
-          <p style={{width: '240px'}}>But don't worry it has been automatically reported</p>
+          <p style={{ width: "240px" }}>
+            But don't worry it has been automatically reported
+          </p>
           <br></br>
-          <button onClick={props.retry} style={{borderRadius:'2px',color: 'white', background: "#1f78b4",outline: 'none', border: '0px', fontSize: '15px',height: '40px',display: 'block' , width:'200px' }}>Retry</button>
+          <button
+            onClick={props.retry}
+            style={{
+              borderRadius: "2px",
+              color: "white",
+              background: "#1f78b4",
+              outline: "none",
+              border: "0px",
+              fontSize: "15px",
+              height: "40px",
+              display: "block",
+              width: "200px",
+            }}
+          >
+            Retry
+          </button>
         </div>
       </>
     );
@@ -48,9 +63,7 @@ export default function Main(props) {
   return (
     <main>
       <div className="main_content">
-        <COVIDData>
-          {RenderMain}
-        </COVIDData>
+        <COVIDData startingCountry="PK">{RenderMain}</COVIDData>
       </div>
     </main>
   );

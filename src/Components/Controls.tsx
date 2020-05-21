@@ -35,10 +35,7 @@ function ControlForm(props: ControlFormProps) {
     );
   }
 
-  const countries = props.allCountriesData?.data.map((country) => [
-    country.code,
-    country.name,
-  ]);
+  
 
   return (
     <div className="controls">
@@ -50,12 +47,12 @@ function ControlForm(props: ControlFormProps) {
           value={props.countryData?.name}
           onChange={props.changeCountry}
         >
-          <option value={"GLOBAL"}> 🌎 &nbsp; Global</option>
-          {countries?.map(([countryCode, countryName]) => {
+          
+          {props.allCountriesData?.data.map(country => {
             return (
-              <option key={countryCode} value={countryName}>
+              <option key={country.code} value={country.name}>
                 {" "}
-                {countryCodeToEmoji(countryCode)} &nbsp; {countryName}
+                {countryCodeToEmoji(country.code)} &nbsp; {country.name}
               </option>
             );
           })}

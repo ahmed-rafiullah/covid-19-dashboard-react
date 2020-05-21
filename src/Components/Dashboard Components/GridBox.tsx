@@ -20,7 +20,7 @@ export default function GridBox(props: GridBoxProps){
     } else {
         return (
             <div className='grid_box' id={props.id}>
-                {props.children()}
+                {props.children}
             </div>
         )
     }
