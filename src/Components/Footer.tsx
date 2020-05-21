@@ -7,7 +7,7 @@ export default function Footer(props) {
   return (
     <footer>
       <div className="footer_content">
-        <h4>Made with ❤️ &nbsp;in Islamabad</h4>
+        <h4>Made with ❤️in Islamabad</h4>
 
         <iframe
           style={{marginLeft: '30px'}}

@@ -252,6 +252,7 @@ main {
   display: flex;
   flex-direction: column;
   padding-top: 20px;
+  min-height: 70px;
 }
 
 .controls h3 {
@@ -392,58 +393,47 @@ main {
   gap: 10px;
 }
 
-#count_total_cases {
-  grid-area: tc;
+.grid_box {
   background-color: #222222;
   border: 1px solid #979797;
-  padding: 10px;
+}
+
+#count_total_cases {
+  grid-area: tc;
+ 
 }
 #count_total_deaths {
   grid-area: td;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+
 }
 #count_total_recoveries {
   grid-area: tr;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+
 }
 
 #cases_today {
   grid-area: ct;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+  
 }
 
 #cases_recovered {
   grid-area: cr;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+ 
 }
 
 #graph_fatality {
   grid-area: gf;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+  position: relative;
+
 }
 
 #graph_recovery {
   grid-area: gr;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+ 
 }
 
 #map {
   grid-area: map;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
   position: relative;
 }
 
@@ -457,23 +447,16 @@ main {
 
 #news {
   grid-area: news;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+ 
 }
 
 #twitterfeed {
   grid-area: twit;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
+
 }
 
 #table {
   grid-area: table;
-  background-color: #222222;
-  border: 1px solid #979797;
-  padding: 10px;
 }
 
 @media only screen and (min-width: 848px) {

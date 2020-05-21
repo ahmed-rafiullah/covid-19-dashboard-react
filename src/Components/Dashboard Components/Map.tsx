@@ -8,8 +8,14 @@ interface MapState {
 }
 
 
+interface MapProps {
+  lng?: number;
+  lat?: number;
+}
 
-export default class Map extends React.Component<{}, MapState> {
+
+
+export default class Map extends React.Component<MapProps, MapState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,9 +25,10 @@ export default class Map extends React.Component<{}, MapState> {
     };
   }
 
-  mapContainer:any  = "";
+  mapContainer:any = "";
 
   componentDidMount() {
+    console.log('hmm')
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/dark-v10",
