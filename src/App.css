@@ -401,13 +401,16 @@ main {
 
 #count_total_cases {
   grid-area: tc;
+  position: relative;
  
 }
 #count_total_deaths {
+  position: relative;
   grid-area: td;
 
 }
 #count_total_recoveries {
+  position: relative;
   grid-area: tr;
 
 }
