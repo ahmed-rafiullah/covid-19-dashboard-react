@@ -49,13 +49,27 @@ export default class COVIDData extends React.Component<
       ),
       fetch(`https://corona-api.com/timeline`).then((res) => res.json()),
     ])
-      .finally(() => delay(500))
+      .finally(() => delay(400))
       .then((res) => {
         const allCountries: AllCountriesDataInterface = res[0]
-        const countryData = allCountries.data.find(x => {
+
+          
+        //TODO: Fix countries having no lat or long ?
+        const hmm = allCountries.data.filter(x => {
+          return x.coordinates.latitude === 0 && x.coordinates.longitude === 0
+         })
+         console.log(hmm)
+
+       
+        const validCountries = allCountries.data.filter(x => {
+          return x.coordinates.latitude !== 0 && x.coordinates.longitude !== 0
+         })
+
+        const countryData = validCountries.find(x => {
             return x.code === this.props.startingCountry
         })
-        
+
+        allCountries.data = validCountries
         
 
         this.setState({
@@ -113,13 +127,22 @@ export default class COVIDData extends React.Component<
       .then((res) => {
 
         const allCountries: AllCountriesDataInterface = res[0]
-        const countryData = allCountries.data.find(x => {
+
+        const validCountries = allCountries.data.filter(x => {
+          return x.coordinates.latitude !== 0 && x.coordinates.longitude !== 0
+         })
+
+        const countryData = validCountries.find(x => {
             return x.code === this.props.startingCountry
         })
 
+        allCountries.data = validCountries
+
+        
+
         this.setState({
             
-          allCountriesData: allCountries,
+          allCountriesData: allCountries ,
           globalTimeline: res[1],
           countryData: countryData,
           isLoading: false,
@@ -146,7 +169,7 @@ export default class COVIDData extends React.Component<
       retry: this.retry,
     };
     return (
-      //   <h1>hehe</h1>
+
       this.props.children(data)
     );
   }
