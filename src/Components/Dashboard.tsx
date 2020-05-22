@@ -87,7 +87,7 @@ export default function Dashboard(props: DashboardProps) {
 
       <GridBox id='map' isLoading={props.isLoading}>
         <div style={{padding: '10px'}}>
-          <Map lat={props.countryData?.coordinates.latitude} lng={props.countryData?.coordinates.longitude} />
+          <Map lat={props.countryData?.coordinates.latitude} lng={props.countryData?.coordinates.longitude} allCoutries={props.allCountriesData}/>
         </div>
       </GridBox>
      

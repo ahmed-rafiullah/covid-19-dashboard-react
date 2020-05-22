@@ -7,8 +7,7 @@ interface GridBoxProps {
 }
 
 export default function GridBox(props: GridBoxProps){
-     console.log('grid')
-    console.log(props)
+
     if(props.isLoading) {
         return (
             <div className='grid_box' id={props.id}>

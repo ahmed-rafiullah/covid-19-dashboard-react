@@ -33,6 +33,7 @@ function RenderMain(props: COVIDDataCallback) {
           }}
         >
           <h4>An Error Occurred</h4>
+          <p>Please Try Again Later</p>
           <p style={{ width: "240px" }}>
             But don't worry it has been automatically reported
           </p>
