@@ -494,7 +494,7 @@ main {
 
 .table_content td, .table_content th{
   
-  padding: 4px;
+  padding: 10px;
 }
 
 @media only screen and (min-width: 848px) {
@@ -625,12 +625,13 @@ main {
 @media only screen and (min-width: 1280px) {
   .grid-container {
     grid-template-areas:
-      "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
-      "tc tc tc td td td tr tr tr  ct ct ct cr cr cr "
-      "map map map map map map map map map  ct ct ct cr cr cr "
+      "tc tc tc td td td tr tr tr ct ct ct cr cr cr "
+      "tc tc tc td td td tr tr tr ct ct ct cr cr cr "
+      "map map map map map map map map map  gr gr gr gf gf gf "
       "map map map map map map map map map gr gr gr gf gf gf"
       "map map map map map map map map map gr gr gr gf gf gf"
-      "map map map map map map map map map gr gr gr gf gf gf"
+      "map map map map map map map map map table table table table table table"
+      "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
@@ -638,7 +639,7 @@ main {
       "news news news news news news news twit twit twit twit twit twit twit twit"
       "news news news news news news news twit twit twit twit twit twit twit twit"
       "news news news news news news news twit twit twit twit twit twit twit twit";
-    gap: 15px;
+    gap: 12px;
     grid-template-columns: repeat(15, 1fr);
   }
 }
