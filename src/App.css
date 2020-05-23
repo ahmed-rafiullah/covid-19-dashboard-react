@@ -398,30 +398,46 @@ main {
   background-color: #222222;
   border: 1px solid #979797;
 }
+/* 
+.grid_box p {
+  margin: 0px;
+  margin-bottom: 20px;
+} */
 
 #count_total_cases {
   grid-area: tc;
   position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  
  
 }
 #count_total_deaths {
   position: relative;
   grid-area: td;
+  font-size: 20px;
+  font-weight: bold;
 
 }
 #count_total_recoveries {
   position: relative;
   grid-area: tr;
+  font-size: 20px;
+  font-weight: bold;
 
 }
 
 #cases_today {
   grid-area: ct;
+  font-size: 20px;
+  font-weight: bold;
   
 }
 
 #cases_recovered {
   grid-area: cr;
+  font-size: 20px;
+  font-weight: bold;
 
  
 }
@@ -429,12 +445,16 @@ main {
 #graph_fatality {
   grid-area: gf;
   position: relative;
+  font-size: 20px;
+  font-weight: bold;
 
 }
 
 #graph_recovery {
   grid-area: gr;
   position: relative;
+  font-size: 20px;
+  font-weight: bold;
  
 }
 
@@ -458,6 +478,7 @@ main {
 
 #twitterfeed {
   grid-area: twit;
+  position: relative;
 
 }
 
@@ -638,10 +659,17 @@ main {
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
-      "news news news news news news news twit twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit twit";
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit";
     gap: 12px;
     grid-template-columns: repeat(15, 1fr);
   }

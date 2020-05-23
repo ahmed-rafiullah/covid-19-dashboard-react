@@ -5,6 +5,7 @@ import MyResponsiveLine from "./Dashboard Components/LineChart";
 import data from "./Dashboard Components/tempdata";
 import { COVIDDataCallback } from "./CovidData";
 import { CountryTable } from "./Dashboard Components/CountryTable";
+import TwitterEmbed from "./Dashboard Components/TwitterEmbed";
 
 type DashboardProps = Pick<
   COVIDDataCallback,
@@ -15,7 +16,7 @@ export default function Dashboard(props: DashboardProps) {
   return (
     <div className="grid-container">
       <GridBox id="count_total_cases" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center" }}>
+        <div style={{ padding: "10px", textAlign: "center"}}>
           <p>Total Cases</p>
           <p>{props.countryData?.latest_data.confirmed}</p>
         </div>
@@ -128,7 +129,10 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="twitterfeed" isLoading={props.isLoading}>
-        <div style={{ padding: "10px" }}>Twitter feed</div>
+      
+           
+           <TwitterEmbed/>
+       
       </GridBox>
 
       <GridBox id="news" isLoading={props.isLoading}>

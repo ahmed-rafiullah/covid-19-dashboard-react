@@ -46,7 +46,7 @@ export default function Footer(props) {
           <li>
             <a href="">
               <CvLogo />
-              <p>Cv</p>
+              <p>CV</p>
             </a>
           </li>
           <li>
