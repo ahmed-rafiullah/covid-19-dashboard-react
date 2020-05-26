@@ -139,7 +139,7 @@ export default function Dashboard(props: DashboardProps) {
       <GridBox id="news" isLoading={props.isLoading}>
         <div style={{ padding: "10px" }}>
           
-        <NewsData country='pakistan'/>
+        <NewsData/>
         </div>
       </GridBox>
 
