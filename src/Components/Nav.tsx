@@ -30,15 +30,15 @@ export default function NavBar(props) {
             
             <li><a href="">CV</a></li>
             
-            <li><a href="">LinkedIn</a></li>
+            <li><a  href="https://www.linkedin.com/in/ahmedkhattak/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
           <p style={{marginBottom: '20px'}}>A React COVID-19 Dashboard</p>
           <iframe
           style={{marginRight: '10px'}}
-          src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true"
+          src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=star&count=true"
           frameBorder="0"
           scrolling="0"
-          width="120"
+          width="80"
           height="20"
           title="GitHub"
         ></iframe>
@@ -46,7 +46,7 @@ export default function NavBar(props) {
 
         <iframe
         
-          src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=watch&count=true&v=2"
+          src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=watch&count=true&v=2"
           frameBorder="0"
           scrolling="0"
           width="120"

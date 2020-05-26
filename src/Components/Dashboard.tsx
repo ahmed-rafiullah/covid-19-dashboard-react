@@ -6,6 +6,7 @@ import data from "./Dashboard Components/tempdata";
 import { COVIDDataCallback } from "./CovidData";
 import { CountryTable } from "./Dashboard Components/CountryTable";
 import TwitterEmbed from "./Dashboard Components/TwitterEmbed";
+import NewsData from './Dashboard Components/NewsData'
 
 type DashboardProps = Pick<
   COVIDDataCallback,
@@ -16,9 +17,9 @@ export default function Dashboard(props: DashboardProps) {
   return (
     <div className="grid-container">
       <GridBox id="count_total_cases" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center"}}>
+        <div className='grid_box_inner_content'>
           <p>Total Cases</p>
-          <p>{props.countryData?.latest_data.confirmed}</p>
+          <h3>{props.countryData?.latest_data.confirmed}</h3>
         </div>
         <div
           style={{
@@ -38,42 +39,42 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="count_total_deaths" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center" }}>
+        <div  className='grid_box_inner_content'>
           <p>Total Deaths</p>
-          <p>{props.countryData?.latest_data.deaths}</p>
+          <h3>{props.countryData?.latest_data.deaths}</h3>
         </div>
     
       </GridBox>
 
       <GridBox id="count_total_recoveries" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center" }}>
+        <div   className='grid_box_inner_content'>
           <p>Total Recovered</p>
-          <p>{props.countryData?.latest_data.recovered}</p>
+          <h3>{props.countryData?.latest_data.recovered}</h3>
         </div>
     
       </GridBox>
 
       <GridBox id="cases_today" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center" }}>
+        <div  className='grid_box_inner_content'>
           <p>Cases Today</p>
-          <p>{props.countryData?.timeline[0]?.new_confirmed ?? "N/A"}</p>
+          <h3>{props.countryData?.timeline[0]?.new_confirmed ?? "N/A"}</h3>
         </div>
       </GridBox>
 
       <GridBox id="cases_recovered" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "center" }}>
+        <div  className='grid_box_inner_content'>
           <p>Cases Recovered</p>
-          <p>{props.countryData?.timeline[0]?.new_recovered ?? "N/A"}</p>
+          <h3>{props.countryData?.timeline[0]?.new_recovered ?? "N/A"}</h3>
         </div>
       </GridBox>
 
       <GridBox id="graph_fatality" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "left", zIndex: 1 }}>
-          <span>Fatality Rate</span>
-          <p>
+        <div  className='grid_box_inner_content' style={{zIndex: 1 }}>
+          <p>Fatality Rate</p>
+          <h3>
             {props.countryData?.latest_data.calculated.death_rate?.toFixed(2) +
               "%"}
-          </p>
+          </h3>
         </div>
         <div
           style={{
@@ -93,13 +94,13 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="graph_recovery" isLoading={props.isLoading}>
-        <div style={{ padding: "10px", textAlign: "left", zIndex: 1 }}>
-          <span>Recovery Rate</span>
-          <p>
+        <div  className='grid_box_inner_content' style={{zIndex: 1 }}>
+          <p>Recovery Rate</p>
+          <h3>
             {props.countryData?.latest_data.calculated.recovery_rate?.toFixed(
               2
             ) + "%"}
-          </p>
+          </h3>
         </div>
         <div
           style={{
@@ -136,7 +137,10 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="news" isLoading={props.isLoading}>
-        <div style={{ padding: "10px" }}>News from news api</div>
+        <div style={{ padding: "10px" }}>
+          
+        <NewsData country='pakistan'/>
+        </div>
       </GridBox>
 
       <GridBox id="table" isLoading={props.isLoading}>

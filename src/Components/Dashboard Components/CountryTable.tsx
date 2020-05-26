@@ -23,7 +23,7 @@ export function CountryTable(props: CountryTableProps) {
               <td>
                 {countryCodeEmoji(x.code)} &nbsp;
                 {truncate(x.name, {
-                  length: 20,
+                  length: 15,
                 })}
               </td>
               <td>{x.latest_data.confirmed}</td>

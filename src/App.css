@@ -8,7 +8,7 @@
   --border-color: #979797;
   --max-width: 1600px;
   --width-percentage: 90%;
-  --global-font-family: 'Nunito Sans', "Inter", sans-serif;
+  --global-font-family: "Nunito Sans", "Inter", sans-serif;
 }
 
 body {
@@ -133,8 +133,6 @@ footer {
   color: white;
 }
 
-
-
 .footer_content {
   padding-left: 0px;
   height: 100%;
@@ -149,11 +147,10 @@ footer {
   padding: 0px;
 }
 
-.footer_content span, .footer_content h4 {
-  display: none
+.footer_content span,
+.footer_content h4 {
+  display: none;
 }
-
-
 
 .footer_nav {
   padding-left: 0px;
@@ -191,12 +188,11 @@ footer {
   font-weight: 400;
 }
 
-  /* make footer stoff appear */
-  .footer_content iframe, .footer_content h4 {
-    display: none
-  }
-
-
+/* make footer stoff appear */
+.footer_content iframe,
+.footer_content h4 {
+  display: none;
+}
 
 /* .footer-content li {
   display: inline-block;
@@ -374,6 +370,7 @@ main {
     "table table table table table table"
     "table table table table table table"
     "table table table table table table"
+    "table table table table table table"
     "map map map map map map"
     "map map map map map map"
     "map map map map map map"
@@ -388,7 +385,12 @@ main {
     "twit twit twit twit twit twit"
     "twit twit twit twit twit twit"
     "twit twit twit twit twit twit"
-    ;
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit"
+    "twit twit twit twit twit twit";
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(50px, auto);
   gap: 10px;
@@ -407,55 +409,52 @@ main {
 #count_total_cases {
   grid-area: tc;
   position: relative;
-  font-size: 20px;
-  font-weight: bold;
+}
+
+.grid_box_inner_content {
+  text-align: left;
+  padding: 10px;
+}
+
+.grid_box_inner_content p {
+  font-size: 14px;
+  font-weight: 100;
   
- 
+}
+
+.grid_box_inner_content h3 {
+  font-size: 19px;
+  margin: 0px;
+}
+
+#count_total_cases > iv p {
+  font-size: 19px;
 }
 #count_total_deaths {
   position: relative;
   grid-area: td;
-  font-size: 20px;
-  font-weight: bold;
-
 }
 #count_total_recoveries {
   position: relative;
   grid-area: tr;
-  font-size: 20px;
-  font-weight: bold;
-
 }
 
 #cases_today {
   grid-area: ct;
-  font-size: 20px;
-  font-weight: bold;
-  
 }
 
 #cases_recovered {
   grid-area: cr;
-  font-size: 20px;
-  font-weight: bold;
-
- 
 }
 
 #graph_fatality {
   grid-area: gf;
   position: relative;
-  font-size: 20px;
-  font-weight: bold;
-
 }
 
 #graph_recovery {
   grid-area: gr;
   position: relative;
-  font-size: 20px;
-  font-weight: bold;
- 
 }
 
 #map {
@@ -473,13 +472,26 @@ main {
 
 #news {
   grid-area: news;
- 
 }
 
 #twitterfeed {
   grid-area: twit;
   position: relative;
+}
 
+#table {
+  grid-area: table;
+  position: relative;
+}
+
+#table {
+  grid-area: table;
+  position: relative;
+}
+
+#table {
+  grid-area: table;
+  position: relative;
 }
 
 #table {
@@ -490,40 +502,52 @@ main {
 .table_content {
   width: 100%;
   border-collapse: collapse;
- /* text-align: start;
+  /* text-align: start;
  display: grid;
  grid-template-columns: 2fr repeat(3, 1fr); */
 }
 
 .table_content tbody {
-  
 }
 
 /* https://css-tricks.com/position-sticky-and-table-headers/ */
 .table_content th {
- background-color: red;
- position: sticky;
- top: 0px;
- text-align: start;
+  background-color: rgb(210, 54, 54);
+  position: sticky;
+  top: 0px;
+  text-align: start;
 }
 
-.table_content thead{
-  background-color: red;
+.table_content thead {
+  background-color: rgb(210, 54, 54);
 }
 
-.table_content tr:hover{
-  background-color: #cccccc;
+.table_content tr:hover {
+  background-color: #363636;
   cursor: pointer;
 }
 
-.table_content td, .table_content th{
-  
+.table_content td,
+.table_content th {
   padding: 10px;
+  white-space: nowrap;
 }
+
+
 
 @media only screen and (min-width: 848px) {
   .controls form select {
     width: 60%;
+    font-size: 20px;
+  }
+
+  .controls h3 {
+    display: inline;
+    font-size: 17px;
+  }
+
+  .controls span {
+    font-size: 11px;
   }
 
   /* footer will not be fixed */
@@ -552,7 +576,6 @@ main {
   .menu {
     margin-left: auto;
     background-image: none;
-   
   }
 
   /* ghaib karo github wale span aur paragraph ko ko */
@@ -571,17 +594,16 @@ main {
 
   /* hide github stuff */
 
-.menu_content iframe{
-  display: none
-}
-
+  .menu_content iframe {
+    display: none;
+  }
 
   /* make the anchor full height to make it easy to click */
   .menu_content ul li {
     height: inherit;
   }
 
-  .menu_content ul li a{
+  .menu_content ul li a {
     height: inherit;
     display: flex;
     align-items: center;
@@ -598,20 +620,20 @@ main {
   }
 
   /* make footer stoff appear */
-  .footer_content iframe, .footer_content h4 {
-    display: initial
+  .footer_content iframe,
+  .footer_content h4 {
+    display: initial;
   }
-  
-  
+
   /* make ul right aligned */
   .footer_nav {
     margin-left: auto;
     width: unset;
   }
-  
+
   /* hide svg */
   .footer_nav svg {
-    display: none
+    display: none;
   }
 
   /* increase font size and weight */
@@ -625,28 +647,66 @@ main {
     margin-left: 20px;
   }
 
+  /*  change gridbox text size and alignment */
+  .grid_box_inner_content {
+    text-align: left;
+  }
+
+  .grid_box_inner_content p {
+    font-size: 17px;
+  }
+
+  .grid_box_inner_content h3 {
+    font-size: 27px;
+    margin: 5px;
+  }
 
   .grid-container {
     grid-template-areas:
-      "tc tc tc td td td tr tr tr  table table table table table "
-      "tc tc tc td td td tr tr tr  table table table table table"
-      "map map map map map map map map map table table table table table"
-      "map map map map map map map map map table table table table table"
-      "map map map map map map map map map gf gf gf gf gf "
-      "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
-      "ct ct ct ct gr gr gr gr gr gf gf gf gf gf"
-      "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
-      "cr cr cr cr gr gr gr gr gr gf gf gf gf gf"
-      "news news news news news news news twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit"
-      "news news news news news news news twit twit twit twit twit twit twit";
+      "tc tc tc td td td tr tr tr  gf gf gf gf gf "
+      "tc tc tc td td td tr tr tr  gf gf gf gf gf"
+      "map map map map map map map map map gf gf gf gf gf"
+      "map map map map map map map map map gf gf gf gf gf"
+      "map map map map map map map map map gr gr gr gr gr"
+      "map map map map map map map map map gr gr gr gr gr"
+      "map map map map map map map map map gr gr gr gr gr"
+      "map map map map map map map map map  ct ct ct ct ct"
+      "table table table table table table table table table  ct ct ct ct ct"
+      "table table table table table table table table table ct ct ct ct ct"
+      "table table table table table table table table table cr cr cr cr cr"
+      "table table table table table table table table table cr cr cr cr cr"
+      "table table table table table table table table table cr cr cr cr cr"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit"
+      "news news news news news news news news twit twit twit twit twit twit";  
     gap: 12px;
     grid-template-columns: repeat(14, 1fr);
   }
 }
 
 @media only screen and (min-width: 1280px) {
+  /*  change gridbox text size and alignment */
+  .grid_box_inner_content {
+    text-align: left;
+  }
+
+  .grid_box_inner_content p {
+    font-size: 19px;
+  }
+
+  .grid_box_inner_content h3 {
+    font-size: 35px;
+  }
+
   .grid-container {
     grid-template-areas:
       "tc tc tc td td td tr tr tr ct ct ct cr cr cr "
@@ -669,7 +729,14 @@ main {
       "news news news news news news news news news news twit twit twit twit twit"
       "news news news news news news news news news news twit twit twit twit twit"
       "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
+      "news news news news news news news news news news twit twit twit twit twit"
       "news news news news news news news news news news twit twit twit twit twit";
+
     gap: 12px;
     grid-template-columns: repeat(15, 1fr);
   }

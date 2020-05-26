@@ -7,22 +7,22 @@ export default function Footer(props) {
   return (
     <footer>
       <div className="footer_content">
-        <h4>Made with ❤️in Islamabad</h4>
+        <h4>Made with ❤️&nbsp;in Islamabad</h4>
 
         <iframe
           style={{marginLeft: '30px'}}
-          src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true"
+          src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=star&count=true"
           frameBorder="0"
           scrolling="0"
-          width="120"
+          width="80"
           height="20"
           title="GitHub"
         ></iframe>
 
 
         <iframe
-          style={{marginLeft: '20px'}}
-          src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=watch&count=true&v=2"
+          style={{marginLeft: '15px'}}
+          src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=watch&count=true&v=2"
           frameBorder="0"
           scrolling="0"
           width="120"
@@ -50,7 +50,7 @@ export default function Footer(props) {
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="https://www.linkedin.com/in/ahmedkhattak/" target="_blank" rel="noopener noreferrer" >
               <LinkedInLogo />
               <p>LinkedIn</p>
             </a>
