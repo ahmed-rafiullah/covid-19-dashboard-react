@@ -377,10 +377,30 @@ main {
     "map map map map map map"
     "map map map map map map"
     "map map map map map map"
-    "news news news news news news"
-    "news news news news news news"
-    "news news news news news news"
-    "news news news news news news"
+    "ggf ggf ggf ggf ggf ggf"
+    "ggf ggf ggf ggf ggf ggf"
+    "ggf ggf ggf ggf ggf ggf"
+    "ggf ggf ggf ggf ggf ggf"
+    "ggr ggr ggr ggr ggr ggr"
+    "ggr ggr ggr ggr ggr ggr"
+    "ggr ggr ggr ggr ggr ggr"
+    "ggr ggr ggr ggr ggr ggr"
+    "ggc ggc ggc ggc ggc ggc"
+    "ggc ggc ggc ggc ggc ggc"
+    "ggc ggc ggc ggc ggc ggc"
+    "ggc ggc ggc ggc ggc ggc"
+    "lgf lgf lgf lgf lgf lgf"
+    "lgf lgf lgf lgf lgf lgf"
+    "lgf lgf lgf lgf lgf lgf"
+    "lgf lgf lgf lgf lgf lgf"
+    "lgr lgr lgr lgr lgr lgr"
+    "lgr lgr lgr lgr lgr lgr"
+    "lgr lgr lgr lgr lgr lgr"
+    "lgr lgr lgr lgr lgr lgr"
+    "lgc lgc lgc lgc lgc lgc"
+    "lgc lgc lgc lgc lgc lgc"
+    "lgc lgc lgc lgc lgc lgc"
+    "lgc lgc lgc lgc lgc lgc"
     "twit twit twit twit twit twit"
     "twit twit twit twit twit twit"
     "twit twit twit twit twit twit"
@@ -397,7 +417,8 @@ main {
 }
 
 .grid_box {
-  background-color: #222222;
+  background-color: #181818;
+  
   border: 1px solid #979797;
 }
 /* 
@@ -427,9 +448,7 @@ main {
   margin: 0px;
 }
 
-#count_total_cases > iv p {
-  font-size: 19px;
-}
+
 #count_total_deaths {
   position: relative;
   grid-area: td;
@@ -454,6 +473,39 @@ main {
 
 #graph_recovery {
   grid-area: gr;
+  position: relative;
+}
+
+/* local graphs */
+#local_graph_fatality {
+  grid-area: lgf;
+  position: relative;
+}
+
+#local_graph_recovery {
+  grid-area: lgr;
+  position: relative;
+}
+
+#local_graph_cases {
+  grid-area: lgc;
+  position: relative;
+}
+
+
+/* global graphs */
+#global_graph_fatality {
+  grid-area: ggf;
+  position: relative;
+}
+
+#global_graph_recovery {
+  grid-area: ggr;
+  position: relative;
+}
+
+#global_graph_cases {
+  grid-area: ggc;
   position: relative;
 }
 
@@ -533,7 +585,9 @@ main {
   white-space: nowrap;
 }
 
-
+/* .recharts-layer.recharts-bar-rectangle path:hover {
+  fill: green;
+} */
 
 @media only screen and (min-width: 848px) {
   .controls form select {
@@ -676,18 +730,32 @@ main {
       "table table table table table table table table table cr cr cr cr cr"
       "table table table table table table table table table cr cr cr cr cr"
       "table table table table table table table table table cr cr cr cr cr"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit"
-      "news news news news news news news news twit twit twit twit twit twit";  
+      "ggf ggf ggf ggf ggf ggf ggf ggf twit twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf twit twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf twit twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf twit twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit" 
+      "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
+      
+      "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
+      
+      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"; 
     gap: 12px;
     grid-template-columns: repeat(14, 1fr);
   }
@@ -719,23 +787,39 @@ main {
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
       "map map map map map map map map map table table table table table table"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit"
-      "news news news news news news news news news news twit twit twit twit twit";
+      "ggf ggf ggf ggf ggf ggf ggf ggf ggf ggf  twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf ggf ggf  twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf ggf ggf  twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf ggf ggf  twit twit twit twit twit"
+      "ggf ggf ggf ggf ggf ggf ggf ggf ggf ggf  twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit"
+      "ggc ggc ggc ggc ggc ggc ggc ggc ggc ggc twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
+      "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
+      
+      "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
+      "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
+      
+      "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
+      "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
+      
+      "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
+      "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit";
 
     gap: 12px;
     grid-template-columns: repeat(15, 1fr);

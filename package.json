@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@nivo/bar": "^0.61.1",
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
     "@now/node": "^1.6.1",
@@ -27,6 +28,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-table": "^7.1.0",
+    "recharts": "^1.8.5",
     "source-map-explorer": "^2.4.2",
     "typescript": "^3.7.5"
   },

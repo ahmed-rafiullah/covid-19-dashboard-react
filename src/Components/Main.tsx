@@ -16,6 +16,7 @@ function RenderMain(props: COVIDDataCallback) {
         <Dashboard
           allCountriesData={props.allCountriesData}
           isLoading={props.isLoading}
+          globalTimeline={props.globalTimeline}
           countryData={props.countryData}
         />
       </>
