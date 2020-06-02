@@ -1,13 +1,13 @@
 import React from "react";
-import Map from "../Components/Dashboard Components/Map";
-import GridBox from "./Dashboard Components/GridBox";
-import MyResponsiveLine from "./Dashboard Components/LineChart";
-import data from "./Dashboard Components/tempdata";
+import Map from "./Map";
+import GridBox from "./GridBox";
+import MyResponsiveLine from "./LineChart";
+import data from "./tempdata";
 import { COVIDDataCallback } from "./CovidData";
-import { CountryTable } from "./Dashboard Components/CountryTable";
-import TwitterEmbed from "./Dashboard Components/TwitterEmbed";
-import BarChart from "./Dashboard Components/BarChart";
-import { HM } from "./Dashboard Components/LineAndBarChart";
+import { CountryTable } from "./CountryTable";
+import TwitterEmbed from "./TwitterEmbed";
+
+import { HM } from "./LineAndBarChart";
 
 type DashboardProps = Pick<
   COVIDDataCallback,
@@ -22,6 +22,7 @@ const graphOptions = {
 };
 
 export default function Dashboard(props: DashboardProps) {
+  console.log(props.isLoading)
   return (
     <div className="grid-container">
       <GridBox id="count_total_cases" isLoading={props.isLoading}>
@@ -38,18 +39,19 @@ export default function Dashboard(props: DashboardProps) {
             right: "0px",
           }}
         >
-          {/* <MyResponsiveLine
+          <MyResponsiveLine
+            simple={true}
             timeline={props.countryData?.timeline}
             xAxisValue="date"
             yAxisValue="confirmed"
-          /> */}
+          />
 
-          <HM
+          {/* <HM
             simple={true}
             xAxisValue="date"
             yAxisValue="confirmed"
             timeline={props.countryData?.timeline}
-          />
+          /> */}
         </div>
       </GridBox>
 
@@ -98,17 +100,18 @@ export default function Dashboard(props: DashboardProps) {
             right: "0px",
           }}
         >
-          {/* <MyResponsiveLine
+          <MyResponsiveLine
+            simple={true}
             timeline={props.countryData?.timeline}
             xAxisValue="date"
             yAxisValue="deaths"
-          /> */}
-          <HM
+          />
+          {/* <HM
             simple={true}
             xAxisValue="date"
             yAxisValue="deaths"
             timeline={props.countryData?.timeline}
-          />
+          /> */}
         </div>
       </GridBox>
 
@@ -130,18 +133,19 @@ export default function Dashboard(props: DashboardProps) {
             right: "0px",
           }}
         >
-          {/* <MyResponsiveLine
+          <MyResponsiveLine
+            simple={true}
             timeline={props.countryData?.timeline}
             xAxisValue="date"
             yAxisValue="recovered"
-          /> */}
+          />
 
-          <HM
+          {/* <HM
             simple={true}
             xAxisValue="date"
             yAxisValue="recovered"
             timeline={props.countryData?.timeline}
-          />
+          /> */}
         </div>
       </GridBox>
 
@@ -160,7 +164,16 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="global_graph_recovery" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>Global Recoveries Over Time</div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Global Recoveries Over Time
+        </div>
         <div
           style={{
             position: "absolute",
@@ -178,8 +191,8 @@ export default function Dashboard(props: DashboardProps) {
             options={graphOptions}
           /> */}
 
-<HM
-            say='recovered'
+          <HM
+            say="recovered"
             xAxisValue="date"
             yAxisValue="recovered"
             timeline={props.globalTimeline?.data}
@@ -188,7 +201,16 @@ export default function Dashboard(props: DashboardProps) {
       </GridBox>
 
       <GridBox id="global_graph_fatality" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>Global Fatalities Over Time</div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Global Fatalities Over Time
+        </div>
         <div
           style={{
             position: "absolute",
@@ -199,19 +221,26 @@ export default function Dashboard(props: DashboardProps) {
             right: "12px",
           }}
         >
-    
-
-<HM
-          say='dead'
-          xAxisValue="date"
-          yAxisValue="deaths"
-          timeline={props.globalTimeline?.data}
-        />
+          <HM
+            say="dead"
+            xAxisValue="date"
+            yAxisValue="deaths"
+            timeline={props.globalTimeline?.data}
+          />
         </div>
       </GridBox>
 
       <GridBox id="global_graph_cases" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>Global New Cases Over Time</div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Global New Cases Over Time
+        </div>
         <div
           style={{
             position: "absolute",
@@ -222,7 +251,7 @@ export default function Dashboard(props: DashboardProps) {
           }}
         >
           <HM
-            say='new cases'
+            say="new cases"
             xAxisValue="date"
             yAxisValue="new_confirmed"
             timeline={props.globalTimeline?.data}
@@ -232,7 +261,16 @@ export default function Dashboard(props: DashboardProps) {
 
       {/*  */}
       <GridBox id="local_graph_recovery" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>Recovery Over Time for {props.countryData?.name ?? 'N/A'} </div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Recovery Over Time for {props.countryData?.name ?? "N/A"}{" "}
+        </div>
         <div
           style={{
             position: "absolute",
@@ -249,17 +287,25 @@ export default function Dashboard(props: DashboardProps) {
             options={graphOptions}
           /> */}
           <HM
-          
-          xAxisValue="date"
-          yAxisValue="recovered"
-          say='recovered'
-          timeline={props.countryData?.timeline}
-        />
+            xAxisValue="date"
+            yAxisValue="recovered"
+            say="recovered"
+            timeline={props.countryData?.timeline}
+          />
         </div>
       </GridBox>
 
       <GridBox id="local_graph_fatality" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>Fatalities Over Time for {props.countryData?.name ?? 'N/A'} </div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          Fatalities Over Time for {props.countryData?.name ?? "N/A"}{" "}
+        </div>
         <div
           style={{
             position: "absolute",
@@ -276,17 +322,26 @@ export default function Dashboard(props: DashboardProps) {
             options={graphOptions}
           /> */}
 
-<HM
-          say='dead'
-          xAxisValue="date"
-          yAxisValue="deaths"
-          timeline={props.countryData?.timeline}
-        />
+          <HM
+            say="dead"
+            xAxisValue="date"
+            yAxisValue="deaths"
+            timeline={props.countryData?.timeline}
+          />
         </div>
       </GridBox>
 
       <GridBox id="local_graph_cases" isLoading={props.isLoading}>
-      <div style={{height:'40px' , padding: '20px', fontSize: '20px', fontWeight: 'bold'}}>New Cases Over Time for {props.countryData?.name ?? 'N/A'} </div>
+        <div
+          style={{
+            height: "40px",
+            padding: "20px",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          New Cases Over Time for {props.countryData?.name ?? "N/A"}{" "}
+        </div>
         <div
           style={{
             position: "absolute",
@@ -303,12 +358,12 @@ export default function Dashboard(props: DashboardProps) {
             options={graphOptions}
           /> */}
 
-<HM
-           say='new cases'
-          xAxisValue="date"
-          yAxisValue="new_confirmed"
-          timeline={props.countryData?.timeline}
-        />
+          <HM
+            say="new cases"
+            xAxisValue="date"
+            yAxisValue="new_confirmed"
+            timeline={props.countryData?.timeline}
+          />
         </div>
       </GridBox>
 

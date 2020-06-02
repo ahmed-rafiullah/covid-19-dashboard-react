@@ -8,7 +8,7 @@ interface MapProps {
   allCoutries: AllCountriesDataInterface | null | undefined;
 }
 
-export default class Map extends React.Component<MapProps> {
+export default class Map extends React.PureComponent<MapProps> {
   mapContainer: any = "";
   map: mapboxgl.Map | null | undefined = null;
 

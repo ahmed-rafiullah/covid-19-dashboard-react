@@ -3,6 +3,7 @@ import { ReactComponent as LinkedInLogo } from "../imgs/linkedin.svg";
 import { ReactComponent as CvLogo } from "../imgs/cv.svg";
 import { ReactComponent as HomeLogo } from "../imgs/home.svg";
 import { ReactComponent as AboutLogo } from "../imgs/question-circle.svg";
+import {Link} from 'react-router-dom'
 export default function Footer(props) {
   return (
     <footer>
@@ -10,7 +11,7 @@ export default function Footer(props) {
         <h4>Made with ❤️&nbsp;in Islamabad</h4>
 
         <iframe
-          style={{marginLeft: '30px'}}
+          style={{ marginLeft: "30px" }}
           src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=star&count=true"
           frameBorder="0"
           scrolling="0"
@@ -19,9 +20,8 @@ export default function Footer(props) {
           title="GitHub"
         ></iframe>
 
-
         <iframe
-          style={{marginLeft: '15px'}}
+          style={{ marginLeft: "15px" }}
           src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=watch&count=true&v=2"
           frameBorder="0"
           scrolling="0"
@@ -32,25 +32,30 @@ export default function Footer(props) {
 
         <ul className="footer_nav">
           <li>
-            <a href="">
+          <Link to='/'>
               <HomeLogo />
               <p>Home</p>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+           <Link to='/about'>
               <AboutLogo />
               <p>About</p>
-            </a>
+            </Link>
+           
           </li>
           <li>
-            <a href="">
+            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
               <CvLogo />
               <p>CV</p>
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/ahmedkhattak/" target="_blank" rel="noopener noreferrer" >
+            <a
+              href="https://www.linkedin.com/in/ahmedkhattak/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <LinkedInLogo />
               <p>LinkedIn</p>
             </a>

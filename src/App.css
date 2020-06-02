@@ -589,7 +589,27 @@ main {
   fill: green;
 } */
 
+.about {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  align-content: center;
+ 
+}
+
+.about a {
+  text-decoration: underline;
+}
+
 @media only screen and (min-width: 848px) {
+  .about {
+    font-size: 20px;
+    
+   
+  }
+
   .controls form select {
     width: 60%;
     font-size: 20px;

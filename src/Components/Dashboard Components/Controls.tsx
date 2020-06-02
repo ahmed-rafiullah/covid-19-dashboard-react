@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import countryCodeToEmoji from "../utils/countryCodeToEmoji";
-import { AllCountriesDataInterface, Country } from "../DataInterfaces/allCountriesDataInterface";
+import countryCodeToEmoji from "../../utils/countryCodeToEmoji";
+import { AllCountriesDataInterface, Country } from "../../DataInterfaces/allCountriesDataInterface";
 import { COVIDDataCallback } from "./CovidData";
 
 

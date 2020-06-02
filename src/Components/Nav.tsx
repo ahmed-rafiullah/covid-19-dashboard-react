@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ReactComponent as SiteLogo } from "../imgs/site-logo.svg";
 import { ReactComponent as NavButton } from "../imgs/bars.svg";
+import {Link} from 'react-router-dom'
 
 export default function NavBar(props) {
 
@@ -24,11 +25,11 @@ export default function NavBar(props) {
         <div className={`menu ${menuState}`}>
           <div className='menu_content'>
           <ul>
-            <li><a href="">Home</a></li>
+            <li><Link to='/'>Home</Link></li>
             
-            <li><a href="">About</a></li>
+            <li><Link to='/about'>About</Link></li>
             
-            <li><a href="">CV</a></li>
+            <li><a  href="/cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
             
             <li><a  href="https://www.linkedin.com/in/ahmedkhattak/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>

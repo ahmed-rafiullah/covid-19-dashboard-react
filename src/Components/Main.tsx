@@ -1,7 +1,9 @@
 import React from "react";
-import Dashboard from "./Dashboard";
-import ControlForm from "./Controls";
-import COVIDData, { COVIDDataCallback } from "./CovidData";
+import Dashboard from "./Dashboard Components/Dashboard";
+import ControlForm from "./Dashboard Components/Controls";
+import COVIDData, { COVIDDataCallback } from "./Dashboard Components/CovidData";
+import {Switch, Route} from 'react-router-dom'
+import About from "./About";
 
 function RenderMain(props: COVIDDataCallback) {
   if (!props.error) {
@@ -65,7 +67,20 @@ export default function Main(props) {
   return (
     <main>
       <div className="main_content">
-        <COVIDData startingCountry="PK">{RenderMain}</COVIDData>
+
+        
+        <Switch>
+          <Route exact path='/'>
+           <COVIDData startingCountry="PK">{RenderMain}</COVIDData>
+          </Route>
+
+          <Route  path='/about'>
+             <About/>
+          </Route>
+
+
+        </Switch>
+       
       </div>
     </main>
   );

@@ -12,10 +12,7 @@ export default function format({
     return null;
   }
 
-  console.log(data);
-  const shiet = data?.map((x) => x[yAxisValue]);
-  const mavg = sma(shiet, 5)
-  // 7 day simple moving average
+
 
 
 
@@ -24,7 +21,7 @@ export default function format({
       name: new Date(x.date).toLocaleString("default", { month: "short" }),
       fulldate: x.date,
       value: x[yAxisValue],
-      movingAvg: mavg[i]
+      // movingAvg: mavg[i]
 
     };
   });

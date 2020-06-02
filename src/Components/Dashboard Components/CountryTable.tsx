@@ -5,7 +5,8 @@ import truncate from "lodash.truncate";
 
 type CountryTableProps = Partial<Pick<AllCountriesDataInterface, "data">>;
 
-export function CountryTable(props: CountryTableProps) {
+function CountryTable(props: CountryTableProps) {
+  console.log('dobara')
   return (
     <table className='table_content'>
       <thead >
@@ -19,7 +20,7 @@ export function CountryTable(props: CountryTableProps) {
       <tbody>
         {props.data?.map((x) => {
           return (
-            <tr>
+            <tr key={x.name}>
               <td>
                 {countryCodeEmoji(x.code)} &nbsp;
                 {truncate(x.name, {
@@ -35,4 +36,11 @@ export function CountryTable(props: CountryTableProps) {
       </tbody>
     </table>
   );
+}
+
+
+const memoizedCountryTable =  React.memo(CountryTable) 
+
+export {
+  memoizedCountryTable as CountryTable
 }

@@ -4,7 +4,9 @@ import {
   Country,
   Timeline,
 } from "../../DataInterfaces/allCountriesDataInterface";
-import dataFormatted from "../../utils/lineChartDataFormatter";
+import lineChartDataFormatter from "../../utils/lineChartDataFormatter";
+import barChartDataFormatter from "../../utils//barChartDataFormatter";
+import { ResponsiveBar } from "@nivo/bar";
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -15,6 +17,7 @@ interface LineChartProps {
   xAxisValue: string;
   yAxisValue: string;
   options?: ChartOptions;
+  simple?: boolean
 }
 
 interface ChartOptions {
@@ -38,17 +41,92 @@ function LineChart(props: LineChartProps) {
     yAxisValue: props.yAxisValue,
     data: props.timeline,
   };
-  const formattedData = dataFormatted(data);
-  console.log(formattedData);
-  if (!formattedData) {
+ 
+
+  
+
+ 
+  if (!props.timeline) {
     return <div></div>;
-  } else {
-    return (
-      <ResponsiveLine
-        data={formattedData}
+  } 
+  
+  
+
+
+  
+    if(props.simple){
+      const formattedLineData = lineChartDataFormatter(data);
+     
+
+      return (
+        <ResponsiveLine
+      
+        //@ts-ignore
+        data={formattedLineData}
         yScale={{ type: "linear", min: 'auto', max: 'auto' }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        axisLeft={null}
+        axisRight={null}
+        axisBottom={null}
+        axisTop={null}
+        enableCrosshair={false}
+        enablePoints={false}
+        enableGridX={false}
+        enableGridY={false}
+        enableArea={true}
+        xScale={{
+          type: "time",
+          format: "%Y-%m-%d",
+          precision: "day",
+        }}
+        
+        colors={{ scheme: "paired" }}
+        isInteractive={false}
+        curve="natural"
+        theme={{
+            axis: {
+                ticks: {
+                    text :{
+                        
+                        fill: 'white'
+                    }
+
+                },
+                legend: {
+                    text: {
+                        fill: 'white'
+                    }
+                }
+
+            },
+            grid: {
+                line: {
+                    stroke: '#363636'
+                }
+            }
+        }}
+        animate={true}
+        // motionStiffness={95}
+        // motionDamping={16}
+        legends={[]}
+        />
+      )
+    }
+
+    const formattedBarData = barChartDataFormatter(data);
+
+    return (
+      <ResponsiveBar
+
+        
+        //@ts-ignore
+        data={formattedBarData}
+        enableLabel={false}
         axisBottom={{
-          format: '%m',
+          
+          format: (value) => { 
+            return new Date(value).toLocaleString('default',{month: 'short'})
+          },
           orient: "top",
           tickSize: 0,
           tickPadding: 0,
@@ -58,6 +136,11 @@ function LineChart(props: LineChartProps) {
           legendPosition: "middle",
 
         }}
+        
+     
+
+       
+        
         margin={{ top: 0, right: 0, bottom: 40, left: 60 }}
         // axisLeft={{
         //     orient: 'left',
@@ -68,19 +151,15 @@ function LineChart(props: LineChartProps) {
         //     legendOffset: 30,
         //     legendPosition: 'middle'
         // }}
-        enableCrosshair={true}
-        enablePoints={props.options?.enablePoints ?? false}
+       
+        
         enableGridX={false}
         enableGridY={props.options?.enableGrid ?? false}
-        enableArea={true}
-        xScale={{
-          type: "time",
-          format: "%Y-%m-%d",
-          precision: "day",
-        }}
+      
+      
         colors={{ scheme: "paired" }}
         isInteractive={props.options?.isInteractive ?? false}
-        curve="natural"
+      
         theme={{
             axis: {
                 ticks: {
@@ -109,7 +188,7 @@ function LineChart(props: LineChartProps) {
         legends={[]}
       />
     );
-  }
+  
 
   // return <div>1</div>
 }
