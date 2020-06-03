@@ -50,26 +50,113 @@ export default class Map extends React.PureComponent<MapProps> {
             "interpolate",
             ["linear"],
             ["get", "cases"],
-            1,4,
-            1000,8,
-            4000,10,
-            8000,14,
-            12000,18,
-            100000, 40,
+            1,
+            4,
+            1000,
+            8,
+            4000,
+            10,
+            8000,
+            14,
+            12000,
+            18,
+            100000,
+            40,
           ],
-          "circle-color":  [
-                 "interpolate",
-                 ["linear"],
-                 ["get", "cases"],
-                 1, '#ffffb2',
-                 5000, '#fed976',
-                 10000, '#feb24c',
-                 25000, '#fd8d3c',
-                 50000, '#fc4e2a',
-                 75000, '#e31a1c',
-                 100000, '#b10026'
-               ]
+          "circle-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "cases"],
+            1,
+            "#ffffb2",
+            5000,
+            "#fed976",
+            10000,
+            "#feb24c",
+            25000,
+            "#fd8d3c",
+            50000,
+            "#fc4e2a",
+            75000,
+            "#e31a1c",
+            100000,
+            "#b10026",
+          ],
         },
+      });
+
+      const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false,
+      });
+
+      // Variable to hold the active country/province on hover
+      let lastId;
+
+      this.map?.on("mousemove", "circles", (e) => {
+        // Get the id from the properties
+
+        //@ts-ignore
+        console.log(e.features[0].geometry);
+
+        //TODO: Fix this
+        // @ts-ignore
+        const f = e.features[0];
+
+        if (!f) {
+          return;
+        }
+
+        const id = f.properties?.id;
+
+        if (!id) {
+          return;
+        }
+
+        if (id !== lastId) {
+          lastId = id;
+          // @ts-ignore
+          this.map.getCanvas().style.cursor = "pointer";
+          // @ts-ignore
+          const { cases, country, deaths, recoveries } = f.properties;
+
+          // @ts-ignore
+          const coordinates = e.features[0].geometry.coordinates.slice();
+
+          const HTML = `
+          <div class='popup'>
+            <p>Country: <b>${country.toLocaleString()}</b></p>
+            <p>Cases: <b>${cases.toLocaleString()}</b></p>
+            <p>Deaths: <b>${deaths.toLocaleString()}</b></p>
+            <p>Recoveries: <b>${recoveries.toLocaleString()}</b></p>
+          </div>
+          `;
+
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          // }
+
+          popup
+            .setLngLat(coordinates)
+            .setHTML(HTML)
+            //@ts-ignore
+            .addTo(this.map);
+
+          console.log(cases);
+          // const coordinates = e.features[0].geometry.coordinates.slice();
+        }
+      });
+
+      // Mouse leave event
+      this.map?.on("mouseleave", "circles", () => {
+        // Reset the last Id
+        lastId = undefined;
+        // @ts-ignore
+        this.map.getCanvas().style.cursor = "";
+        popup.remove()
       });
     });
 
@@ -94,6 +181,7 @@ export default class Map extends React.PureComponent<MapProps> {
           country: x.name,
           cases: x.latest_data.confirmed,
           deaths: x.latest_data.deaths,
+          recoveries: x.latest_data.recovered,
         },
       };
     });
