@@ -5,7 +5,7 @@
   --secondary-color: #222222;
   --input-background-color: #2b2b2b;
   --padding: 1.1rem;
-  --border-color: #979797;
+  --border-color: #9797975e;
   --max-width: 1600px;
   --width-percentage: 90%;
   --global-font-family: "Nunito Sans", "Inter", sans-serif;
@@ -359,11 +359,12 @@ main {
   display: grid;
   margin-top: 30px;
   grid-template-areas:
-    "tc tc td td tr tr "
-    "tc tc td td tr tr "
+    "tc tc tc tc tc tc "
+    "tc tc tc tc tc tc "
+    "tr tr tr td td td "
+    "tr tr tr td td td "
     "ct ct ct cr cr cr"
     "ct ct ct cr cr cr"
-    "gf gf gf gr gr gr"
     "gf gf gf gr gr gr"
     "gf gf gf gr gr gr"
     "table table table table table table"
@@ -418,8 +419,8 @@ main {
 
 .grid_box {
   background-color: #181818;
-  
-  border: 1px solid #979797;
+
+  border: 1px solid #97979766;
 }
 /* 
 .grid_box p {
@@ -440,12 +441,24 @@ main {
 .grid_box_inner_content p {
   font-size: 14px;
   font-weight: 100;
-  
 }
 
 .grid_box_inner_content h3 {
-  font-size: 19px;
+  font-size: 18px;
   margin: 0px;
+}
+
+.graph_heading {
+  
+  padding: 14px;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.graph_container {
+  position: relative;
+  flex: 1
 }
 
 
@@ -478,33 +491,44 @@ main {
 
 /* local graphs */
 #local_graph_fatality {
+  display: flex;
+  flex-direction: column;
   grid-area: lgf;
   position: relative;
 }
 
 #local_graph_recovery {
+  display: flex;
+  flex-direction: column;
   grid-area: lgr;
   position: relative;
 }
 
 #local_graph_cases {
+  display: flex;
+  flex-direction: column;
   grid-area: lgc;
   position: relative;
 }
 
-
 /* global graphs */
 #global_graph_fatality {
+  display: flex;
+  flex-direction: column;
   grid-area: ggf;
   position: relative;
 }
 
 #global_graph_recovery {
+  display: flex;
+  flex-direction: column;
   grid-area: ggr;
   position: relative;
 }
 
 #global_graph_cases {
+  display: flex;
+  flex-direction: column;
   grid-area: ggc;
   position: relative;
 }
@@ -522,6 +546,19 @@ main {
   right: 2px;
 }
 
+/* popup tooltip of map */
+.popup {
+  color: black;
+}
+
+.popup p {
+  margin: 5px;
+}
+
+.mapboxgl-popup-content {
+  padding: 10px;
+}
+
 #news {
   grid-area: news;
 }
@@ -536,24 +573,12 @@ main {
   position: relative;
 }
 
-#table {
-  grid-area: table;
-  position: relative;
-}
 
-#table {
-  grid-area: table;
-  position: relative;
-}
-
-#table {
-  grid-area: table;
-  position: relative;
-}
 
 .table_content {
   width: 100%;
   border-collapse: collapse;
+  font-size: 14px;
   /* text-align: start;
  display: grid;
  grid-template-columns: 2fr repeat(3, 1fr); */
@@ -596,7 +621,6 @@ main {
   justify-content: stretch;
   align-items: stretch;
   align-content: center;
- 
 }
 
 .about a {
@@ -604,10 +628,15 @@ main {
 }
 
 @media only screen and (min-width: 848px) {
+
+  .graph_heading { 
+
+    padding: 14px;
+    font-size: 18px;
+  }
+
   .about {
     font-size: 20px;
-    
-   
   }
 
   .controls form select {
@@ -761,21 +790,19 @@ main {
       "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
       "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
       "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
-      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit" 
+      "ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit twit"
-      
       "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit twit"
-      
       "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
       "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
       "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"
-      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit"; 
+      "lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit twit";
     gap: 12px;
     grid-template-columns: repeat(14, 1fr);
   }
@@ -822,19 +849,16 @@ main {
       "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
       "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
       "ggr ggr ggr ggr ggr ggr ggr ggr ggr ggr twit twit twit twit twit"
-      
       "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
       "lgr lgr lgr lgr lgr lgr lgr lgr lgr lgr twit twit twit twit twit"
-      
       "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
       "lgc lgc lgc lgc lgc lgc lgc lgc lgc lgc twit twit twit twit twit"
-      
       "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
       "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"
       "lgf lgf lgf lgf lgf lgf lgf lgf lgf lgf twit twit twit twit twit"

@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard Components/Dashboard";
 import ControlForm from "./Dashboard Components/Controls";
-import COVIDData, { COVIDDataCallback } from "./Dashboard Components/CovidData";
+import COVIDData, { COVIDDataCallback } from "./Dashboard Components/CovidDataHOC";
 import {Switch, Route} from 'react-router-dom'
 import About from "./About";
 

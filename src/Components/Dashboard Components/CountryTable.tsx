@@ -27,9 +27,9 @@ function CountryTable(props: CountryTableProps) {
                   length: 15,
                 })}
               </td>
-              <td>{x.latest_data.confirmed}</td>
-              <td>{x.latest_data.recovered}</td>
-              <td>{x.latest_data.deaths}</td>
+              <td>{x.latest_data.confirmed.toLocaleString()}</td>
+              <td>{x.latest_data.recovered.toLocaleString()}</td>
+              <td>{x.latest_data.deaths.toLocaleString()}</td>
             </tr>
           );
         })}
