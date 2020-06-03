@@ -2,28 +2,12 @@ import React from "react";
 
 export default function About() {
   return (
-    <div
-    className='about'
-     
-    >
+    <div className="about">
       <h1>About</h1>
 
       <p>
-        This is a simple project i made to learn React. The source code is available on 
-        
-        <iframe
-          style={{marginRight: '6px', marginLeft: '10px'}}
-          src="https://ghbtns.com/github-btn.html?user=AhmedKhattak&repo=covid-19-dashboard-react&type=star&count=true"
-          frameBorder="0"
-          scrolling="0"
-          width="80"
-          height="20"
-          title="GitHub"
-        ></iframe>
-
-        
-        in the footer .The API for the
-        dashboard is provided by{" "}
+        This is a simple project i made to learn React. The source code for this
+        app is available on github. The API for the dashboard is provided by{" "}
         <a href="https://about-corona.net/documentation">
           https://about-corona.net/documentation
         </a>
@@ -47,14 +31,12 @@ export default function About() {
         </ul>
       </p>
       <p>
-        Thanks to {" "}
+        Thanks to{" "}
         <a href="https://about-corona.net/">https://about-corona.net </a>
-         for providing the API.
-
-         
+        for providing the API.
       </p>
 
-      <h3 style={{textAlign: 'center', marginTop:'80px'}}>
+      <h3 style={{ textAlign: "center", marginTop: "50px" }}>
         Stay Safe • Wear Masks • Wash hands • Maintain Social Distance
       </h3>
     </div>
