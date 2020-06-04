@@ -9,6 +9,12 @@ Stay Safe • Wear Masks • Wash hands • Maintain Social Distance
 
 The sources for data are available at the api documentation as well.
 
+You can deploy a copy of this app instantly using vercel deploy. Click the button below to get started
+
+<a href="https://vercel.com/import/project?template=https://github.com/AhmedKhattak/covid-19-dashboard-react">
+  <img src="https://vercel.com/button" alt="Deploy" />
+</a>
+
 
 ##### Screenshots
 
