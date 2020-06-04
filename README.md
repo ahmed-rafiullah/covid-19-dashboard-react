@@ -13,23 +13,19 @@ The sources for data are available at the api documentation as well.
 ##### Screenshots
 
  
-![alt text](./screenshots/5.png "screenshot")
 
-![alt text](./screenshots/6.png "screenshot")
 
-![alt text](./screenshots/1.png "screenshot")
+ <img src="./screenshots/5.png" alt="drawing" />
 
- 
- <img src="./screenshots/7.png" alt="drawing" width="300"/>
-
- <img src="./screenshots/8.png" alt="drawing" width="300"/>
-
-  <img src="./screenshots/9.png" alt="drawing" width="300"/>
+  <img src="./screenshots/1.png" alt="drawing"/>
 
 
 
 
-##### Datasources 
+
+
+
+#### Datasources 
 
 * World Health Organization Situation Reports
 * Johns Hopkins CSSE
@@ -40,7 +36,7 @@ The sources for data are available at the api documentation as well.
 * DXY.cn. Pneumonia. 2020
 
 
-##### Features
+#### Features
 * View global graphs of recovery, cases, and death rate.
 * View recovery rate and fatality rate
 * View detailed information on map
@@ -50,7 +46,7 @@ The sources for data are available at the api documentation as well.
 
 
 
-##### Technical stuff for Interviewers
+#### Technical stuff for Interviewers
 This project makes use of the following :
 
 * Typescript
@@ -62,18 +58,19 @@ This project makes use of the following :
 * Recharts and Nivo Charts integration
 * Performance optimization using React.PureComponent
 * Fetching and transforming external data
-* Local Caching to improve performance on page navigation 
+* Local Caching to improve performance on page navigation
+* Front End monitoring using sentry 
 
 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##### Available Scripts
+#### Available Scripts
 
 In the project directory, you can run:
 
-#####  `npm start`
+####  `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -81,12 +78,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-#####  `npm test`
+####  `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#####  `npm run build`
+####  `npm run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -96,7 +93,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-#####  `npm run eject`
+####  `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
