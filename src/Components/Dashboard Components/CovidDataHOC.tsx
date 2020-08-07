@@ -218,7 +218,8 @@ export default function useCovidData(props: COVIDDataProps): UseCovidDataReturns
       `https://corona.lmao.ninja/v3/covid-19/countries`,
       `https://corona-api.com/timeline`,
     ],
-    getAllData
+    getAllData,
+    {refetchInterval: 0, refetchOnWindowFocus: false, refetchIntervalInBackground: false}
   );
 
   const [state, setState] = useState<COVIDDataState>({

@@ -3,20 +3,21 @@ import Map from "./Map";
 import GridBox from "./GridBox";
 import MyResponsiveLine from "./LineChart";
 import data from "./tempdata";
-import {  UseCovidDataReturns } from "./CovidDataHOC";
+import { UseCovidDataReturns } from "./CovidDataHOC";
 import { CountryTable } from "./CountryTable";
 import TwitterEmbed from "./TwitterEmbed";
 
 import { HM } from "./LineAndBarChart";
+import { CountryTimeLineHOC } from "./CountryTimeLineHOC";
 
-type DashboardProps = Pick<UseCovidDataReturns, 'allCountriesData' | 'isLoading' | 'countryData' | 'globalTimeline'>
-
-
-
-
+type DashboardProps = Pick<
+  UseCovidDataReturns,
+  "allCountriesData" | "isLoading" | "countryData" | "globalTimeline"
+>;
 
 export default function Dashboard(props: DashboardProps) {
   console.log(props.isLoading);
+
   return (
     <div className="grid-container">
       <GridBox id="count_total_cases" isLoading={props.isLoading}>
@@ -56,33 +57,106 @@ export default function Dashboard(props: DashboardProps) {
         </div>
       </GridBox>
 
-      {/* <GridBox id="cases_today" isLoading={props.isLoading}>
-        <div className="grid_box_inner_content">
-          <p>Cases Today</p>
-          <h3>
-            {props.countryData?.timeline[0]?.new_confirmed.toLocaleString() ??
-              "N/A"}
-          </h3>
-        </div>
-      </GridBox> */}
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
 
-      {/* <GridBox id="cases_recovered" isLoading={props.isLoading}>
-        <div className="grid_box_inner_content">
-          <p>Cases Recovered</p>
-          <h3>
-            {props.countryData?.timeline[0]?.new_recovered.toLocaleString() ??
-              "N/A"}
-          </h3>
-        </div>
-      </GridBox> */}
+          return (
+            <GridBox id="cases_today" isLoading={props.isLoading}>
+              <div className="grid_box_inner_content">
+                <p>Cases Today</p>
+                <h3>
+                  {country?.timeline[0]?.new_confirmed.toLocaleString() ?? "N/A"}
+                </h3>
+              </div>
+            </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
 
-      <GridBox id="graph_fatality" isLoading={props.isLoading}>
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="cases_recovered" isLoading={props.isLoading}>
+              <div className="grid_box_inner_content">
+                <p>Cases Recovered</p>
+                <h3>
+                  {country?.timeline[0]?.new_recovered.toLocaleString() ??
+                    "N/A"}
+                </h3>
+              </div>
+            </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
+
+    
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="graph_fatality" isLoading={props.isLoading}>
         <div className="grid_box_inner_content" style={{ zIndex: 1 }}>
           <p>Fatality Rate</p>
           <h3>
-            
-            {((props.countryData?.recovered ?? 1) / (props.countryData?.cases ?? 1)).toFixed(2) +
-              "%"}
+            {(
+              (props.countryData?.recovered ?? 1) /
+              (props.countryData?.cases ?? 1)
+            ).toFixed(2) + "%"}
           </h3>
         </div>
         <div
@@ -100,48 +174,81 @@ export default function Dashboard(props: DashboardProps) {
             xAxisValue="date"
             yAxisValue="deaths"
           /> */}
-          {/* <HM
+          <HM
             simple={true}
             xAxisValue="date"
             yAxisValue="deaths"
-            timeline={props.countryData?.timeline}
-          /> */}
+            timeline={country?.timeline ?? []}
+          />
         </div>
       </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
 
-      <GridBox id="graph_recovery" isLoading={props.isLoading}>
-        <div className="grid_box_inner_content" style={{ zIndex: 1 }}>
-          <p>Recovery Rate</p>
-          <h3>
-              {/* @ts-ignore */}
-              {((props.countryData?.deaths ?? 1) / (props.countryData?.cases ?? 1)).toFixed(2) +
-              "%"}
-          </h3>
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "0px",
-            left: "0px",
-            bottom: "0px",
-            right: "0px",
-          }}
-        >
-          {/* <MyResponsiveLine
-            simple={true}
-            timeline={props.countryData?.timeline}
-            xAxisValue="date"
-            yAxisValue="recovered"
-          /> */}
 
-          {/* <HM
-            simple={true}
-            xAxisValue="date"
-            yAxisValue="recovered"
-            timeline={props.countryData?.timeline}
-          /> */}
-        </div>
-      </GridBox>
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="graph_recovery" isLoading={props.isLoading}>
+            <div className="grid_box_inner_content" style={{ zIndex: 1 }}>
+              <p>Recovery Rate</p>
+              <h3>
+                {/* @ts-ignore */}
+                {(
+                  (props.countryData?.deaths ?? 1) / (props.countryData?.cases ?? 1)
+                ).toFixed(2) + "%"}
+              </h3>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                top: "0px",
+                left: "0px",
+                bottom: "0px",
+                right: "0px",
+              }}
+            >
+              {/* <MyResponsiveLine
+                simple={true}
+                timeline={props.countryData?.timeline}
+                xAxisValue="date"
+                yAxisValue="recovered"
+              /> */}
+    
+              <HM
+                simple={true}
+                xAxisValue="date"
+                yAxisValue="recovered"
+                timeline={country?.timeline ?? []}
+              />
+            </div>
+          </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
+     
+
+     
 
       <GridBox id="map" isLoading={props.isLoading}>
         <div style={{ padding: "10px" }}>
@@ -160,153 +267,7 @@ export default function Dashboard(props: DashboardProps) {
       <GridBox id="global_graph_recovery" isLoading={props.isLoading}>
         <div className="graph_heading">Global Recoveries Over Time</div>
 
-        <div  className='graph_container'>
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
-          }}
-        >
-          {/* <MyResponsiveLine
-            timeline={props.globalTimeline?.data}
-            xAxisValue="date"
-            yAxisValue="recovered"
-            options={graphOptions}
-          /> */}
-
-          <HM
-            say="recovered"
-            xAxisValue="date"
-            yAxisValue="recovered"
-            timeline={props.globalTimeline?.data}
-          />
-        </div>
-        </div>
-       
-      </GridBox>
-
-      <GridBox id="global_graph_fatality" isLoading={props.isLoading}>
-        <div className="graph_heading">Global Fatalities Over Time</div>
-        <div  className='graph_container'>
-
-
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
-          }}
-        >
-          <HM
-            say="dead"
-            xAxisValue="date"
-            yAxisValue="deaths"
-            timeline={props.globalTimeline?.data}
-          />
-        </div>
-        </div>
-
-    
-      </GridBox>
-
-      <GridBox id="global_graph_cases" isLoading={props.isLoading}>
-        <div className="graph_heading">Global New Cases Over Time</div>
-        <div  className='graph_container'>
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
-          }}
-        >
-          <HM
-            say="new cases"
-            xAxisValue="date"
-            yAxisValue="new_confirmed"
-            timeline={props.globalTimeline?.data}
-          />
-        </div>
-        </div>
-       
-      </GridBox>
-
-      {/*  */}
-      <GridBox id="local_graph_recovery" isLoading={props.isLoading}>
-        <div className="graph_heading">
-          Recovery Over Time for {props.countryData?.country ?? "N/A"}{" "}
-        </div>
-
-        <div  className='graph_container'>
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
-          }}
-        >
-          {/* <MyResponsiveLine
-            timeline={props.countryData?.timeline}
-            xAxisValue="date"
-            yAxisValue="recovered"
-            options={graphOptions}
-          /> */}
-          {/* <HM
-            xAxisValue="date"
-            yAxisValue="recovered"
-            say="recovered"
-            timeline={props.countryData?.timeline}
-          /> */}
-        </div>
-          </div>
-        
-      </GridBox>
-
-      <GridBox id="local_graph_fatality" isLoading={props.isLoading}>
-        <div className="graph_heading">
-          Fatalities Over Time for {props.countryData?.country ?? "N/A"}{" "}
-        </div>
-        <div  className='graph_container'>
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
-          }}
-        >
-          {/* <MyResponsiveLine
-            timeline={props.countryData?.timeline}
-            xAxisValue="date"
-            yAxisValue="deaths"
-            options={graphOptions}
-          /> */}
-
-          {/* <HM
-            say="dead"
-            xAxisValue="date"
-            yAxisValue="deaths"
-            timeline={props.countryData?.timeline}
-          /> */}
-        </div>
-        </div>
-      
-      </GridBox>
-
-      <GridBox id="local_graph_cases" isLoading={props.isLoading}>
-        <div className="graph_heading">
-          New Cases Over Time for {props.countryData?.country ?? "N/A"}{" "}
-        </div>
-        <div className='graph_container'>
+        <div className="graph_container">
           <div
             style={{
               position: "absolute",
@@ -317,21 +278,223 @@ export default function Dashboard(props: DashboardProps) {
             }}
           >
             {/* <MyResponsiveLine
-            timeline={props.countryData?.timeline}
+            timeline={props.globalTimeline?.data}
             xAxisValue="date"
-            yAxisValue="confirmed"
+            yAxisValue="recovered"
             options={graphOptions}
           /> */}
 
-            {/* <HM
-              say="new cases"
+            <HM
+              say="recovered"
               xAxisValue="date"
-              yAxisValue="new_confirmed"
-              timeline={props.countryData?.timeline}
-            /> */}
+              yAxisValue="recovered"
+              timeline={props.globalTimeline?.data}
+            />
           </div>
         </div>
       </GridBox>
+
+      <GridBox id="global_graph_fatality" isLoading={props.isLoading}>
+        <div className="graph_heading">Global Fatalities Over Time</div>
+        <div className="graph_container">
+          <div
+            style={{
+              position: "absolute",
+              top: "12px",
+              bottom: "12px",
+              left: "12px",
+              right: "12px",
+            }}
+          >
+            <HM
+              say="dead"
+              xAxisValue="date"
+              yAxisValue="deaths"
+              timeline={props.globalTimeline?.data}
+            />
+          </div>
+        </div>
+      </GridBox>
+
+      <GridBox id="global_graph_cases" isLoading={props.isLoading}>
+        <div className="graph_heading">Global New Cases Over Time</div>
+        <div className="graph_container">
+          <div
+            style={{
+              position: "absolute",
+              top: "12px",
+              bottom: "12px",
+              left: "12px",
+              right: "12px",
+            }}
+          >
+            <HM
+              say="new cases"
+              xAxisValue="date"
+              yAxisValue="new_confirmed"
+              timeline={props.globalTimeline?.data}
+            />
+          </div>
+        </div>
+      </GridBox>
+
+      {/*  */}
+
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="local_graph_recovery" isLoading={props.isLoading}>
+            <div className="graph_heading">
+              Recovery Over Time for {props.countryData?.country ?? "N/A"}{" "}
+            </div>
+    
+            <div className="graph_container">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "12px",
+                  bottom: "12px",
+                  left: "12px",
+                  right: "12px",
+                }}
+              >
+         
+                <HM
+                xAxisValue="date"
+                yAxisValue="recovered"
+                say="recovered"
+                timeline={country?.timeline ?? []}
+              />
+              </div>
+            </div>
+          </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
+      
+      
+
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="local_graph_fatality" isLoading={props.isLoading}>
+        <div className="graph_heading">
+          Fatalities Over Time for {props.countryData?.country ?? "N/A"}{" "}
+        </div>
+        <div className="graph_container">
+          <div
+            style={{
+              position: "absolute",
+              top: "12px",
+              bottom: "12px",
+              left: "12px",
+              right: "12px",
+            }}
+          >
+  
+            <HM
+            say="dead"
+            xAxisValue="date"
+            yAxisValue="deaths"
+            timeline={country?.timeline ?? []}
+          />
+          </div>
+        </div>
+      </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
+     
+
+      <CountryTimeLineHOC
+        countryCode={props.countryData?.countryInfo.iso2 ?? "PK"}
+      >
+        {({ country, error, isLoading }) => {
+          if (error) {
+            return (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                <span>Error</span>
+              </div>
+            );
+          }
+
+          return (
+            <GridBox id="local_graph_cases" isLoading={props.isLoading}>
+            <div className="graph_heading">
+              New Cases Over Time for {props.countryData?.country ?? "N/A"}{" "}
+            </div>
+            <div className="graph_container">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "12px",
+                  bottom: "12px",
+                  left: "12px",
+                  right: "12px",
+                }}
+              >
+      
+    
+                <HM
+                  say="new cases"
+                  xAxisValue="date"
+                  yAxisValue="new_confirmed"
+                  timeline={country?.timeline ?? []}
+                />
+              </div>
+            </div>
+          </GridBox>
+          );
+        }}
+      </CountryTimeLineHOC>
+     
 
       <GridBox id="table" isLoading={props.isLoading}>
         <div
