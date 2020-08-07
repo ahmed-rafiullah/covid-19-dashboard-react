@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import countryCodeToEmoji from "../../utils/countryCodeToEmoji";
 import { AllCountriesDataInterface, Country } from "../../DataInterfaces/allCountriesDataInterface";
-import { COVIDDataCallback } from "./CovidDataHOC";
+import { UseCovidDataReturns } from "./CovidDataHOC";
+
 
 
 
@@ -17,7 +18,9 @@ import { COVIDDataCallback } from "./CovidDataHOC";
 // }
 
 // create type from existing type !
-type ControlFormProps = Pick<COVIDDataCallback, 'changeCountry' | 'isLoading' | 'allCountriesData' | 'countryData'>
+type ControlFormProps  = Pick<UseCovidDataReturns, 'allCountriesData' | 'changeCountry' | 'isLoading' | 'countryData'> 
+
+
 
 function ControlForm(props: ControlFormProps) {
   if (props.isLoading) {
@@ -44,15 +47,15 @@ function ControlForm(props: ControlFormProps) {
       <form>
         <select
           name="currentCountry"
-          value={props.countryData?.name}
+          value={props.countryData?.country}
           onChange={props.changeCountry}
         >
           
           {props.allCountriesData?.data.map(country => {
             return (
-              <option key={country.code} value={country.name}>
+              <option key={'' + country.countryInfo.iso2 + country.countryInfo.iso3} value={country.country}>
                 {" "}
-                {countryCodeToEmoji(country.code)} &nbsp; {country.name}
+                {countryCodeToEmoji(country.countryInfo.iso2)} &nbsp; {country.country}
               </option>
             );
           })}

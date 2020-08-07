@@ -1,6 +1,7 @@
+import { NewCountryData } from "./novelGetAllCountries";
+
 export interface AllCountriesDataInterface {
-    data: Country[];
-    _cacheHit: boolean;
+    data: NewCountryData[];
   }
   
   export interface Country {

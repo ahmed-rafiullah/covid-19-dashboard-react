@@ -1,25 +1,39 @@
 import React from "react";
 import Dashboard from "./Dashboard Components/Dashboard";
 import ControlForm from "./Dashboard Components/Controls";
-import COVIDData, { COVIDDataCallback } from "./Dashboard Components/CovidDataHOC";
+import COVIDData, {  } from "./Dashboard Components/CovidDataHOC";
 import {Switch, Route} from 'react-router-dom'
 import About from "./About";
+import useCovidData from "./Dashboard Components/CovidDataHOC";
 
-function RenderMain(props: COVIDDataCallback) {
-  if (!props.error) {
+function RenderMain() {
+  const {
+      allCountriesData,
+      error,
+      changeCountry,
+      countryData,
+      isLoading,
+      globalTimeline,
+      retry,
+
+
+  } = useCovidData({
+    startingCountry: 'Pakistan'
+  })
+  if (!error) {
     return (
       <>
         <ControlForm
-          isLoading={props.isLoading}
-          allCountriesData={props.allCountriesData}
-          changeCountry={props.changeCountry}
-          countryData={props.countryData}
+          isLoading={isLoading}
+          allCountriesData={allCountriesData}
+          changeCountry={changeCountry}
+          countryData={countryData}
         />
         <Dashboard
-          allCountriesData={props.allCountriesData}
-          isLoading={props.isLoading}
-          globalTimeline={props.globalTimeline}
-          countryData={props.countryData}
+          allCountriesData={allCountriesData}
+          isLoading={isLoading}
+          globalTimeline={globalTimeline}
+          countryData={countryData}
         />
       </>
     );
@@ -42,7 +56,7 @@ function RenderMain(props: COVIDDataCallback) {
           </p>
           <br></br>
           <button
-            onClick={props.retry}
+            onClick={retry}
             style={{
               borderRadius: "2px",
               color: "white",
@@ -71,7 +85,7 @@ export default function Main(props) {
         
         <Switch>
           <Route exact path='/'>
-           <COVIDData startingCountry="PK">{RenderMain}</COVIDData>
+            <RenderMain/>
           </Route>
 
           <Route  path='/about'>

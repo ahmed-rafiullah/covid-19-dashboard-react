@@ -3,10 +3,9 @@ import { AllCountriesDataInterface } from "../../DataInterfaces/allCountriesData
 import countryCodeEmoji from "../../utils/countryCodeToEmoji";
 import truncate from "lodash.truncate";
 
-type CountryTableProps = Partial<Pick<AllCountriesDataInterface, "data">>;
+type CountryTableProps = AllCountriesDataInterface
 
 function CountryTable(props: CountryTableProps) {
-  console.log('dobara')
   return (
     <table className='table_content'>
       <thead >
@@ -20,16 +19,16 @@ function CountryTable(props: CountryTableProps) {
       <tbody>
         {props.data?.map((x) => {
           return (
-            <tr key={x.name}>
+            <tr key={x.country}>
               <td>
-                {countryCodeEmoji(x.code)} &nbsp;
-                {truncate(x.name, {
+                {countryCodeEmoji(x.countryInfo.iso2)} &nbsp;
+                {truncate(x.country, {
                   length: 15,
                 })}
               </td>
-              <td>{x.latest_data.confirmed.toLocaleString()}</td>
-              <td>{x.latest_data.recovered.toLocaleString()}</td>
-              <td>{x.latest_data.deaths.toLocaleString()}</td>
+              <td>{x.cases.toLocaleString()}</td>
+              <td>{x.recovered.toLocaleString()}</td>
+              <td>{x.deaths.toLocaleString()}</td>
             </tr>
           );
         })}

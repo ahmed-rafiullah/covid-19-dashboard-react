@@ -174,14 +174,14 @@ export default class Map extends React.PureComponent<MapProps> {
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [x.coordinates.longitude, x.coordinates.latitude],
+          coordinates: [x.countryInfo.long, x.countryInfo.lat],
         },
         properties: {
-          id: x.code, // unique identifier in this case the index
-          country: x.name,
-          cases: x.latest_data.confirmed,
-          deaths: x.latest_data.deaths,
-          recoveries: x.latest_data.recovered,
+          id: '' + x.countryInfo._id + x.countryInfo.iso2 + x.countryInfo.iso3, // unique identifier in this case the index
+          country: x.country,
+          cases: x.cases,
+          deaths: x.deaths,
+          recoveries: x.recovered,
         },
       };
     });
