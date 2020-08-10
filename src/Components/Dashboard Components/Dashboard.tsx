@@ -16,7 +16,7 @@ type DashboardProps = Pick<
 >;
 
 export default function Dashboard(props: DashboardProps) {
-  console.log(props.isLoading);
+
 
   return (
     <div className="grid-container">

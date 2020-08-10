@@ -13,7 +13,7 @@ export default class Map extends React.PureComponent<MapProps> {
   map: mapboxgl.Map | null | undefined = null;
 
   componentDidMount() {
-    console.log("hmm");
+  
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/khattakahmed/ckai0622g0ggc1io16p7dggg4",
@@ -97,7 +97,7 @@ export default class Map extends React.PureComponent<MapProps> {
         // Get the id from the properties
 
         //@ts-ignore
-        console.log(e.features[0].geometry);
+       
 
         //TODO: Fix this
         // @ts-ignore
@@ -145,7 +145,7 @@ export default class Map extends React.PureComponent<MapProps> {
             //@ts-ignore
             .addTo(this.map);
 
-          console.log(cases);
+    
           // const coordinates = e.features[0].geometry.coordinates.slice();
         }
       });

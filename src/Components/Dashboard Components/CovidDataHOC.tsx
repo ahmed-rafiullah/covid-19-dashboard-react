@@ -203,7 +203,7 @@ export interface UseCovidDataReturns  extends COVIDDataState{
 // }
 
 function getAllData(query) {
-  console.log(query);
+  
   return Promise.all([
     fetch(`https://corona.lmao.ninja/v3/covid-19/countries`).then((res) =>
       res.json()
