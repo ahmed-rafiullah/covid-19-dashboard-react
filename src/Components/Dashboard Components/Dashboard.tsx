@@ -147,6 +147,7 @@ export default function Dashboard(props: DashboardProps) {
               </div>
             );
           }
+          
 
           return (
             <GridBox id="graph_fatality" isLoading={props.isLoading}>
@@ -154,9 +155,9 @@ export default function Dashboard(props: DashboardProps) {
           <p>Fatality Rate</p>
           <h3>
             {(
-              (props.countryData?.recovered ?? 1) /
+              (props.countryData?.deaths ?? 1) /
               (props.countryData?.cases ?? 1)
-            ).toFixed(2) + "%"}
+            ).toFixed(3) + "%"}
           </h3>
         </div>
         <div
@@ -168,17 +169,12 @@ export default function Dashboard(props: DashboardProps) {
             right: "0px",
           }}
         >
-          {/* <MyResponsiveLine
-            simple={true}
-            timeline={props.countryData?.timeline}
-            xAxisValue="date"
-            yAxisValue="deaths"
-          /> */}
+
           <HM
             simple={true}
             xAxisValue="date"
             yAxisValue="deaths"
-            timeline={country?.timeline ?? []}
+            timeline={country?.timeline}
           />
         </div>
       </GridBox>
@@ -215,8 +211,8 @@ export default function Dashboard(props: DashboardProps) {
               <h3>
                 {/* @ts-ignore */}
                 {(
-                  (props.countryData?.deaths ?? 1) / (props.countryData?.cases ?? 1)
-                ).toFixed(2) + "%"}
+                  (props.countryData?.recovered ?? 1) / (props.countryData?.cases ?? 1)
+                ).toFixed(3) + "%"}
               </h3>
             </div>
             <div
